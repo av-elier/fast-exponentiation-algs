@@ -16,6 +16,15 @@ public:
 	virtual ~ExpAlgInterface();
 };
 
+
+//! Пишу свои варианты в дополнение к твоим. Потом будем их комбинировать
+
+
+// Пустой класс для порядка, а может потом как-нибудь и пригодится.
+class Exponentiation {
+
+};
+
 class ExpAlgFastInterface : ExpAlgInterface {
 public:
 	ExpAlgFastInterface();
@@ -33,6 +42,13 @@ public:
 	virtual void precalculate();
 	virtual BigIntGF exp(BigIntGF xn);
 };
+
+
+//template <typename T>
+//class GeneralExponentiation : public Exponentiation {
+    //template <typename T>
+    //T exp(T
+//};
 
 class ExpAlgPrecalcXInterface : ExpAlgPrecalcInterface {
 public:
