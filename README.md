@@ -2,10 +2,20 @@ fast-exponention-algs
 =====================
 *1 курс магистратуры Мехмата ЮФУ (2013 г.). Методы быстрого экспоненцирования в группах.*
 
-Инструкция
+Инструкции
 ----------
 Выбираем методы, дописываем %USERNAME% (своё имя) в начало.
-Про формат **.md** [здесь](https://help.github.com/articles/github-flavored-markdown). Поиграться можно [тут](http://notepag.es/).
+
+### Материалы
+#### Про README.md
+Про формат **.md** [здесь](https://help.github.com/articles/github-flavored-markdown).
+Поиграться с ним можно [тут](http://notepag.es/).
+
+#### Про GIT
+[О ветвлении и слиянии](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
+[О ветвлении и слиянии на русском](http://git-scm.com/book/ru/%D0%92%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-Git-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%B2%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D1%8F)
+
+
 
 
 
