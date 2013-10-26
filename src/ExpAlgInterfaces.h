@@ -8,7 +8,7 @@
 #ifndef EXPALGINTERFACES_H_
 #define EXPALGINTERFACES_H_
 
-#include "BigIngGF.h"
+#include "BigIntGF.cpp"
 
 class ExpAlgInterface {
 public:
