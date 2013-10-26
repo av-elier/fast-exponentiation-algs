@@ -6,17 +6,15 @@ fast-exponention-algs
 ----------
 Выбираем методы, дописываем %USERNAME% (своё имя) в начало.
 
-### Материалы
+Материалы
+---------
+
 #### Про README.md
-Про формат **.md** [здесь](https://help.github.com/articles/github-flavored-markdown).
-Поиграться с ним можно [тут](http://notepag.es/).
+Про формат Markdown (**.md**) [здесь](https://help.github.com/articles/github-flavored-markdown).
+Поиграться с ним online можно [тут](http://notepag.es/).
 
 #### Про GIT
-[О ветвлении и слиянии](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
-[О ветвлении и слиянии на русском](http://git-scm.com/book/ru/%D0%92%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-Git-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%B2%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D1%8F)
-
-
-
+[Про ветвление и слияние](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
 
 
 Общие методы экспоненцирования
