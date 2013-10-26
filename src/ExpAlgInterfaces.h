@@ -1,14 +1,14 @@
 /*
  * ExpAlgInterface.h
  *
- *  Created on: 26 окт. 2013 г.
+ *  Created on: 26 РѕРєС‚. 2013 Рі.
  *      Author: Adelier
  */
 
 #ifndef EXPALGINTERFACES_H_
 #define EXPALGINTERFACES_H_
 
-#include "BigIntGF.cpp"
+#include "BigIntGF.h"
 
 class ExpAlgInterface {
 public:

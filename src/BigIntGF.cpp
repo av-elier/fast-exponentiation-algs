@@ -1,25 +1,26 @@
 /*
  * BigIngGF.cpp
  *
- *  Created on: 26 окт. 2013 г.
+ *  Created on: 26 РѕРєС‚. 2013 Рі.
  *      Author: Adelier
  */
 
-class BigIntGF {
-public:
-	BigIntGF();
-	virtual ~BigIntGF();
+#include "BigIntGF.h"
 
+BigIntGF::BigIntGF(){
 
+}
+BigIntGF::~BigIntGF(){
 
-	BigIntGF mult(BigIntGF y){
-		BigIntGF result = BigIntGF();
+}
 
-		return result;
-	}
-	BigIntGF sqr(){
-		BigIntGF result = BigIntGF();
+BigIntGF BigIntGF::mult(BigIntGF y){
+	BigIntGF result = BigIntGF();
 
-		return result;
-	}
-};
+	return result;
+}
+BigIntGF BigIntGF::sqr(){
+	BigIntGF result = BigIntGF();
+
+	return result;
+}
