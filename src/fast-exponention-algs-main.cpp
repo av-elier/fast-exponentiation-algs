@@ -12,9 +12,11 @@
 
 using namespace std;
 
+BigIntGF big;
+
 int main() {
-	BigIntGF big = BigIntGF();
-	BigIntGF big2 = big.sqr();
+	big = big.sqr();
+
 
 	cout << "Hello World" << endl; // prints Hello World
 	return 0;

@@ -1,7 +1,7 @@
 /*
  * LeftToRight.cpp
  *
- *  Created on: 26 окт. 2013 г.
+ *  Created on: 26 РѕРєС‚. 2013 Рі.
  *      Author: Adelier
  */
 
