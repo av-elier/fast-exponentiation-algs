@@ -8,7 +8,11 @@
 #ifndef EXPALGINTERFACES_H_
 #define EXPALGINTERFACES_H_
 
-#include "BigIntGF.h"
+#include "NTL/ZZ.h"
+#include "NTL/ZZ_p.h"
+
+using namespace NTL;
+using namespace std;
 
 class ExpAlgInterface {
 public:
@@ -21,35 +25,27 @@ public:
 	ExpAlgFastInterface();
 	virtual ~ExpAlgFastInterface();
 
-	virtual BigIntGF exp(BigIntGF x, BigIntGF n);
+	virtual ZZ_p exp(ZZ_p x, ZZ n);
 
 };
 
-class ExpAlgPrecalcInterface : ExpAlgInterface {
-public:
-	ExpAlgPrecalcInterface();
-	virtual ~ExpAlgPrecalcInterface();
 
-	virtual void precalculate();
-	virtual BigIntGF exp(BigIntGF xn);
-};
-
-class ExpAlgPrecalcXInterface : ExpAlgPrecalcInterface {
+class ExpAlgPrecalcXInterface : ExpAlgInterface {
 public:
-	ExpAlgPrecalcXInterface(BigIntGF x);
+	ExpAlgPrecalcXInterface();
 	virtual ~ExpAlgPrecalcXInterface();
 
-	virtual void precalculate();
-	virtual BigIntGF exp(BigIntGF n);
+	virtual void precalculate(ZZ_p x);
+	virtual ZZ_p exp(ZZ n);
 };
 
-class ExpAlgPrecalcNInterface : ExpAlgPrecalcInterface {
+class ExpAlgPrecalcNInterface : ExpAlgInterface {
 public:
-	ExpAlgPrecalcNInterface(BigIntGF n);
+	ExpAlgPrecalcNInterface();
 	virtual ~ExpAlgPrecalcNInterface();
 
-	virtual void precalculate();
-	virtual BigIntGF exp(BigIntGF x);
+	virtual void precalculate(ZZ n);
+	virtual ZZ_p exp(ZZ_p x);
 };
 
 #endif /* EXPALGINTERFACES_H_ */

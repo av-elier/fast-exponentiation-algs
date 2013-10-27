@@ -8,16 +8,17 @@
 
 #include <iostream>
 
-#include "BigIntGF.h"
+#include "NTL/ZZ.h"
+#include "NTL/ZZ_p.h"
 
 using namespace std;
+using namespace NTL;
 
-BigIntGF big;
 
 int main() {
-	big = big.sqr();
+	ZZ primeornot = conv<ZZ>(123);
+	primeornot = primeornot*primeornot;
 
-
-	cout << "Hello World" << endl; // prints Hello World
+	cout << primeornot << endl; // prints Hello World
 	return 0;
 }
