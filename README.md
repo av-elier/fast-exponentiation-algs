@@ -49,3 +49,7 @@ fast-exponention-algs
 21. Яо (используем разложение по смешанному основанию)
 22. метод на основе алгоритма Евклида
 23. Пайтонжера (Лима-Ли)
+ 
+UML модель:
+----------------------------------------------------
+<img align="center" src="http://app.genmymodel.com/files/_CQuxYCEAEDGA0s8pW3fAbA/fast-exponention-algs-diag.jpg">
