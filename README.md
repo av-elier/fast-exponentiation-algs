@@ -14,7 +14,7 @@ fast-exponention-algs
 Поиграться с ним online можно [тут](http://notepag.es/).
 
 #### Про GIT
-[Про ветвление и слияние](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
+[Online книга](http://git-scm.com/book/ru)
 
 
 Общие методы экспоненцирования
@@ -52,4 +52,4 @@ fast-exponention-algs
  
 UML модель:
 ----------------------------------------------------
-<img align="center" src="http://app.genmymodel.com/files/_CQuxYCEAEDGA0s8pW3fAbA/fast-exponention-algs-diag.jpg">
+![UML](http://app.genmymodel.com/files/_CQuxYCEAEDGA0s8pW3fAbA/fast-exponention-algs-diag.svg)
