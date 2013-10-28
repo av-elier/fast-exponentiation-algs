@@ -219,7 +219,7 @@ pip-log.txt
 .mr.developer.cfg
 
 #Qt projects
-qt/build-runner-Desktop_Qt_5_1_1_MinGW_32bit-Debug
+qt_projects/build-runner-Desktop_Qt_5_1_1_MinGW_32bit-Debug
 
 
 /Default
