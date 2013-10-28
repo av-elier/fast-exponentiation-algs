@@ -1,7 +1,7 @@
 /*
  * RightToLeftByAdelier.h
  *
- *  Created on: 28 окт. 2013 г.
+ *  Created on: 28 пїЅпїЅпїЅ. 2013 пїЅ.
  *      Author: Adelier
  */
 
@@ -10,25 +10,25 @@
 /*
  * RightToLeftByAdelier.h
  *
- *  Created on: 28 окт. 2013 г.
+ *  Created on: 28 пїЅпїЅпїЅ. 2013 пїЅ.
  *      Author: Adelier
  */
 
 #include "ExpAlgInterfaces.h"
-#include "NTL/ZZ.h"
-#include "NTL/ZZ_p.h"
+#include "NTL\ZZ.h"
+#include "NTL\ZZ_p.h"
 using namespace NTL;
 
 
-namespace RightToLeftByAdelier {
+namespace Adelier {
 
-class RightToLeftByAdelier {
+class RightToLeftByAdelier : public ExpAlgFastInterface {
 public:
 	RightToLeftByAdelier();
 	virtual ~RightToLeftByAdelier();
 	ZZ_p exp(ZZ_p x, ZZ n);
 };
 
-} /* namespace RightToLeftByAdelier */
+} /* namespace Adelier */
 
 #endif /* RIGHTTOLEFTBYADELIER_H_ */

@@ -1,13 +1,13 @@
 /*
  * RightToLeftByAdelier.cpp
  *
- *  Created on: 28 окт. 2013 г.
+ *  Created on: 28 пїЅпїЅпїЅ. 2013 пїЅ.
  *      Author: Adelier
  */
 
 #include "RightToLeftByAdelier.h"
 
-namespace RightToLeftByAdelier {
+namespace Adelier {
 
 RightToLeftByAdelier::RightToLeftByAdelier() {
 	// TODO Auto-generated constructor stub
@@ -18,14 +18,17 @@ RightToLeftByAdelier::~RightToLeftByAdelier() {
 	// TODO Auto-generated destructor stub
 }
 
-ZZ_p exp(ZZ_p x, ZZ n){
-	ZZ primeornot = conv<ZZ>(123);
+ZZ_p RightToLeftByAdelier::exp(ZZ_p x, ZZ exponent){
+	ZZ_p y = conv<ZZ_p>(1);
 
-	ZZ_p::init(primeornot);
+	long l = NumBits(exponent);
 
-	ZZ_p modularElem;
-
-	return modularElem;
+	for(int i = 0; i < l; ++i){
+		if (bit(exponent, i) == 1)
+			y*=x;
+		x*=x;
+	}
+	return y;
 }
 
 } /* namespace RightToLeftByAdelier */

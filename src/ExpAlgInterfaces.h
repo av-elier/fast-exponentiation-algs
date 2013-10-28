@@ -16,36 +16,36 @@ using namespace std;
 
 class ExpAlgInterface {
 public:
-	ExpAlgInterface();
-	virtual ~ExpAlgInterface();
+	ExpAlgInterface(){}
+	virtual ~ExpAlgInterface(){}
 };
 
-class ExpAlgFastInterface : ExpAlgInterface {
+class ExpAlgFastInterface : public ExpAlgInterface {
 public:
-	ExpAlgFastInterface();
-	virtual ~ExpAlgFastInterface();
+	ExpAlgFastInterface(){}
+	virtual ~ExpAlgFastInterface(){}
 
-	virtual ZZ_p exp(ZZ_p x, ZZ n);
+	virtual ZZ_p exp(ZZ_p x, ZZ n){}
 
 };
 
 
-class ExpAlgPrecalcXInterface : ExpAlgInterface {
+class ExpAlgPrecalcXInterface : public ExpAlgInterface {
 public:
-	ExpAlgPrecalcXInterface();
-	virtual ~ExpAlgPrecalcXInterface();
+	ExpAlgPrecalcXInterface(){}
+	virtual ~ExpAlgPrecalcXInterface(){}
 
-	virtual void precalculate(ZZ_p x);
-	virtual ZZ_p exp(ZZ n);
+	virtual void precalculate(ZZ_p x){}
+	virtual ZZ_p exp(ZZ n){}
 };
 
-class ExpAlgPrecalcNInterface : ExpAlgInterface {
+class ExpAlgPrecalcNInterface : public ExpAlgInterface {
 public:
-	ExpAlgPrecalcNInterface();
-	virtual ~ExpAlgPrecalcNInterface();
+	ExpAlgPrecalcNInterface(){}
+	virtual ~ExpAlgPrecalcNInterface(){}
 
-	virtual void precalculate(ZZ n);
-	virtual ZZ_p exp(ZZ_p x);
+	virtual void precalculate(ZZ n){}
+	virtual ZZ_p exp(ZZ_p x){return conv<ZZ_p>(0);}
 };
 
 #endif /* EXPALGINTERFACES_H_ */
