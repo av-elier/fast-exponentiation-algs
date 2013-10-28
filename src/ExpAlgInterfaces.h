@@ -25,7 +25,7 @@ public:
 	ExpAlgFastInterface(){}
 	virtual ~ExpAlgFastInterface(){}
 
-	virtual ZZ_p exp(ZZ_p x, ZZ n){}
+	virtual ZZ_p exp(ZZ_p x, ZZ n){return conv<ZZ_p>(0);}
 
 };
 
@@ -36,7 +36,7 @@ public:
 	virtual ~ExpAlgPrecalcXInterface(){}
 
 	virtual void precalculate(ZZ_p x){}
-	virtual ZZ_p exp(ZZ n){}
+	virtual ZZ_p exp(ZZ n){return conv<ZZ_p>(0);}
 };
 
 class ExpAlgPrecalcNInterface : public ExpAlgInterface {

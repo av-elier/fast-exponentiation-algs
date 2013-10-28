@@ -1,4 +1,6 @@
 gmon.out
+*.dot
+*.xml
 
 #################
 ## Eclipse
