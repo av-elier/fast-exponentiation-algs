@@ -13,15 +13,14 @@
 #include "NTL/ZZ.h"
 #include "NTL/ZZ_p.h"
 
-#include "RightToLeftByAdelier.h"
+#include "./algorithms/RightToLeftByAdelier.h"
 
 #include "Launcher.h"
 
 using namespace std;
 using namespace NTL;
-using namespace Adelier;
 
-const int TESTS_COUNT = 1000;
+const int TESTS_COUNT = 300;
 const double PROFFY_SAMPLING_DELAY = 1.0 / 200; // Delay between samples, so here set to 200 Hz
 const wchar_t* PATH_TO_PROFFY_EXE = L"J:/Program Files/Proffy profiler/Proffy64.exe"; // Path to Proffy.exe
 const wchar_t* PATH_TO_PROFFY_OUT = L"./Profiler"; // Output directory for the result files
@@ -55,8 +54,8 @@ int main() {
 
 
 	// algorithms
-	ExpAlgFastInterface* algRLAdelier = new RightToLeftByAdelier();
-	ExpAlgFastInterface* algRLAdelier2 = new RightToLeftByAdelier();
+	ExpAlgFastInterface* algRLAdelier = new Adelier::RightToLeft();
+	ExpAlgFastInterface* algRLAdelier2 = new Adelier::RightToLeft();
 
 
 	// NOTE: FIRST RUN IS SLOWER THAN NEXT. Probably NTL optimization
@@ -64,9 +63,9 @@ int main() {
 	// their profiling
 	profile_fast_algo(TESTS_COUNT, algRLAdelier);
 	char* tmp = new char(12);
-	cin >> tmp; // (1)
+	//cin >> tmp; // (1)
 	profile_fast_algo(TESTS_COUNT, algRLAdelier2);
-	cin >> tmp; // (1)
+	//cin >> tmp; // (1)
 	profile_fast_algo(TESTS_COUNT, algRLAdelier);
 
 

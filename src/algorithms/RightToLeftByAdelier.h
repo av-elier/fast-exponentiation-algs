@@ -14,7 +14,7 @@
  *      Author: Adelier
  */
 
-#include "ExpAlgInterfaces.h"
+#include "..\ExpAlgInterfaces.h"
 #include "NTL\ZZ.h"
 #include "NTL\ZZ_p.h"
 using namespace NTL;
@@ -22,10 +22,10 @@ using namespace NTL;
 
 namespace Adelier {
 
-class RightToLeftByAdelier : public ExpAlgFastInterface {
+class RightToLeft : public ExpAlgFastInterface {
 public:
-	RightToLeftByAdelier();
-	virtual ~RightToLeftByAdelier();
+	RightToLeft();
+	virtual ~RightToLeft();
 	ZZ_p exp(ZZ_p x, ZZ n);
 };
 

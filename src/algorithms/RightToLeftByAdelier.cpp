@@ -1,5 +1,5 @@
 /*
- * RightToLeftByAdelier.cpp
+ * RightToLeft.cpp
  *
  *  Created on: 28 ���. 2013 �.
  *      Author: Adelier
@@ -9,16 +9,16 @@
 
 namespace Adelier {
 
-RightToLeftByAdelier::RightToLeftByAdelier() {
+RightToLeft::RightToLeft() {
 	// TODO Auto-generated constructor stub
 
 }
 
-RightToLeftByAdelier::~RightToLeftByAdelier() {
+RightToLeft::~RightToLeft() {
 	// TODO Auto-generated destructor stub
 }
 
-ZZ_p RightToLeftByAdelier::exp(ZZ_p x, ZZ exponent){
+ZZ_p RightToLeft::exp(ZZ_p x, ZZ exponent){
 	ZZ_p y = conv<ZZ_p>(1);
 
 	long l = NumBits(exponent);
@@ -31,4 +31,4 @@ ZZ_p RightToLeftByAdelier::exp(ZZ_p x, ZZ exponent){
 	return y;
 }
 
-} /* namespace RightToLeftByAdelier */
+} /* namespace Adelier */

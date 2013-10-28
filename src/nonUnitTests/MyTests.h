@@ -14,7 +14,7 @@
 #include "NTL/ZZ_p.h"
 
 #include "../ExpAlgInterfaces.h"
-#include "../RightToLeftByAdelier.h"
+#include "../algorithms/RightToLeftByAdelier.h"
 
 NTL_CLIENT;
 
@@ -37,11 +37,11 @@ static bool testFastAlg(ExpAlgFastInterface *algo){
 	return true;
 }
 static void run(){
-	ExpAlgFastInterface *AdelierRL = new Adelier::RightToLeftByAdelier();
+	ExpAlgFastInterface *AdelierRL = new Adelier::RightToLeft();
 	if (testFastAlg(AdelierRL))
-		cout<<"success"<<endl;
+		cout<<"test success"<<endl;
 	else
-		cout<<"FAIL"<<endl;
+		cout<<"TEST FAILED!"<<endl;
 }
 
 
