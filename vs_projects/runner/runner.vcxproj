@@ -14,6 +14,9 @@
     <ClCompile Include="..\..\src\algorithms\RightToLeftByAdelier.cpp" />
     <ClCompile Include="..\..\src\fast-exponention-algs-main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Include\ExpAlgInterfaces.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1FD2E111-6ECF-46E6-8807-4BB0C89C0172}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

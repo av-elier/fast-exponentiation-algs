@@ -8,16 +8,23 @@
 #ifndef EXPALGINTERFACES_H_
 #define EXPALGINTERFACES_H_
 
-#include "NTL/ZZ.h"
-#include "NTL/ZZ_p.h"
 
-using namespace NTL;
-using namespace std;
+enum ExpAlgos
+{
+    algLeftRight = 0,
+    algRightLeft
+};
+
 
 class ExpAlgInterface {
 public:
 	ExpAlgInterface(){}
 	virtual ~ExpAlgInterface(){}
+};
+
+class ExpAlg {
+    virtual void setAuthor(std::string author) = 0;
+    virtual void setMethod(std::string author) = 0;
 };
 
 class ExpAlgFastInterface : public ExpAlgInterface {
