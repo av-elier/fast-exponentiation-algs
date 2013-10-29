@@ -14,7 +14,10 @@ fast-exponention-algs
 Поиграться с ним online можно [тут](http://notepag.es/).
 
 #### Про GIT
-[Про ветвление и слияние](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
+[Online книга](http://git-scm.com/book/ru)
+
+#### Интересные и полезные ссылки
+[Выставка групп!](http://web.bentley.edu/empl/c/ncarter/ge-v1/groups.html)
 
 
 Общие методы экспоненцирования
@@ -49,3 +52,7 @@ fast-exponention-algs
 21. Яо (используем разложение по смешанному основанию)
 22. метод на основе алгоритма Евклида
 23. Пайтонжера (Лима-Ли)
+ 
+UML модель:
+----------------------------------------------------
+![UML](http://app.genmymodel.com/files/_CQuxYCEAEDGA0s8pW3fAbA/fast-exponention-algs-diag.svg)
