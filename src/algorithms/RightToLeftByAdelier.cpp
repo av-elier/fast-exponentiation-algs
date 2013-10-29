@@ -5,7 +5,7 @@
  *      Author: Adelier
  */
 
-#include "RightToLeftByAdelier.h"
+#include "algorithms/RightToLeftByAdelier.h"
 
 namespace Adelier {
 

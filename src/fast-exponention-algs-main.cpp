@@ -8,22 +8,22 @@
 
 #include <iostream>
 
-#include "nonUnitTests/MyTests.h"
+#include "tests/MyTests.h"
 
 #include "NTL/ZZ.h"
 #include "NTL/ZZ_p.h"
 
 #include "./algorithms/RightToLeftByAdelier.h"
 
-#include "Launcher.h"
+#include "Proffy/Launcher.h"
 
 using namespace std;
 using namespace NTL;
 
 const int TESTS_COUNT = 300;
 const double PROFFY_SAMPLING_DELAY = 1.0 / 200; // Delay between samples, so here set to 200 Hz
-const wchar_t* PATH_TO_PROFFY_EXE = L"J:/Program Files/Proffy profiler/Proffy64.exe"; // Path to Proffy.exe
-const wchar_t* PATH_TO_PROFFY_OUT = L"./Profiler"; // Output directory for the result files
+const wchar_t* PATH_TO_PROFFY_EXE = L"Proffy64.exe"; // Proffy64 should be included to path
+const wchar_t* PATH_TO_PROFFY_OUT = L"D:\projects\fast-exponentiation-algs\profiler_reports"; // Output directory for the result files
 
 
 // maybe TODO threading. Proffy rewrites file thread-<numthread>.xml (1)
