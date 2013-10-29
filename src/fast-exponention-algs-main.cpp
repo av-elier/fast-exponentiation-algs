@@ -16,15 +16,16 @@
 #include "NTL/ZZ.h"
 #include "NTL/ZZ_p.h"
 
-#include "./algorithms/RightToLeftByAdelier.h"
+#include "./algorithms/adelier/RightToLeftByAdelier.h"
+#include "./algorithms/adelier/FloatingWindowUnsigned.h"
 
 #include "Launcher.h"
 
 using namespace std;
 using namespace NTL;
 
-const int TESTS_COUNT = 50000;
-const double PROFFY_SAMPLING_DELAY = 1.0 / 200; // Delay between samples, so here set to 200 Hz
+const int TESTS_COUNT = 100000;
+const double PROFFY_SAMPLING_DELAY = 1.0 / 10; // Delay between samples, so here set to 200 Hz
 const wchar_t* PATH_TO_PROFFY_EXE = L"J:/Program Files/Proffy profiler/Proffy64.exe"; // Path to Proffy.exe
 //const wchar_t* PATH_TO_PROFFY_OUT = L"./Profiler"; // Output directory for the result files. Should exist!!!
 
@@ -79,19 +80,21 @@ int main() {
 	// algorithms
 	vector<ExpAlgFastInterface*> fastAlgs;
 	fastAlgs.push_back(new Adelier::RightToLeft());
+	fastAlgs.push_back(new Adelier::FloatingWindowUnsigned(3));
 
 	vector<ExpAlgPrecalcXInterface*> fixedBaseAlgs;
 
 	vector<ExpAlgPrecalcNInterface*> fixedExponentAlgs;
 
 
-	MyTests::run(fastAlgs, fixedBaseAlgs, fixedExponentAlgs);
+	if (!MyTests::run(fastAlgs, fixedBaseAlgs, fixedExponentAlgs))
+		return -1;
 
 
 	// NOTE: FIRST RUN IS SLOWER THAN NEXT. Probably NTL optimization
 	// TODO solve this problem
 	// their profiling
-	for (int i = 0; i < fastAlgs.size(); ++i){
+	for (unsigned int i = 0; i < fastAlgs.size(); ++i){
 		wcout << L"Test "<< i << L": "<< fastAlgs[i]->name << L" by " << fastAlgs[i]->author << endl;
 		profile_fast_algo(TESTS_COUNT, fastAlgs[i]);
 	}

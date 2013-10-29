@@ -18,14 +18,15 @@ using namespace std;
 
 class ExpAlgInterface {
 public:
+	const wchar_t* author; // unique
+	const wchar_t* name; // unique
+
 	ExpAlgInterface(){
 		author = L"author";
 		name = L"name";
 	}
 	virtual ~ExpAlgInterface(){}
 
-	const wchar_t* author; // unique
-	const wchar_t* name; // unique
 
 	const wchar_t* getLogDirPath(){
 		return L"./Profiler";
