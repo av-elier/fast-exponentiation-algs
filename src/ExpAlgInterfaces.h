@@ -11,13 +11,35 @@
 #include "NTL/ZZ.h"
 #include "NTL/ZZ_p.h"
 
+#include <sstream>
+
 using namespace NTL;
 using namespace std;
 
 class ExpAlgInterface {
 public:
-	ExpAlgInterface(){}
+	ExpAlgInterface(){
+		author = L"author";
+		name = L"name";
+	}
 	virtual ~ExpAlgInterface(){}
+
+	const wchar_t* author; // unique
+	const wchar_t* name; // unique
+
+	const wchar_t* getLogDirPath(){
+		return L"./Profiler";
+	}
+	const wchar_t* getLogAuthorPath(){
+		std::wostringstream buf;
+		buf << getLogDirPath() << L"/" << author;
+		return buf.str().c_str();
+	}
+	const wchar_t* getLogAuthorNamePath(){
+		std::wostringstream buf;
+		buf << getLogAuthorPath() << L"/" << name;
+		return buf.str().c_str();
+	}
 };
 
 class ExpAlgFastInterface : public ExpAlgInterface {

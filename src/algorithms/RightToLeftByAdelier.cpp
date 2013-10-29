@@ -10,8 +10,8 @@
 namespace Adelier {
 
 RightToLeft::RightToLeft() {
-	// TODO Auto-generated constructor stub
-
+	author = L"Adelier";
+	name = L"RL";
 }
 
 RightToLeft::~RightToLeft() {
