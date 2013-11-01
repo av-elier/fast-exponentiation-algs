@@ -14,6 +14,8 @@
 
 NTL_CLIENT
 
+enum AlgTypes {ASd};
+
 /*
  * Общие методы экспоненцирования
  */
@@ -21,19 +23,24 @@ class ExpAlg {
 public:
 	virtual ZZ_p exp(ZZ_p base, ZZ exponent) = 0;
 
-	const std::string& getAuthor() const {
+	const std::wstring& getAuthor() const {
 		return author;
 	}
-	const std::string& getMethod() const {
+	const std::wstring& getMethod() const {
 		return method;
 	}
-	virtual ~ExpAlg() = 0;
+	void setAuthor(const std::wstring& author) {
+		this->author = author;
+	}
+	void setMethod(const std::wstring& method) {
+		this->method = method;
+	}
 
 private:
 	// Должен быть задан в конструкторе вашей реализации
-	std::string author;
+	std::wstring author;
 	// Должен быть задан в конструкторе вашей реализации
-	std::string method;
+	std::wstring method;
 };
 
 /*
@@ -48,7 +55,6 @@ public:
 		precalc(base);
 		return exp(exponent);
 	}
-	virtual ~ExpAlgFixedBase() = 0;
 };
 
 /*
@@ -63,7 +69,6 @@ public:
 		precalc(exponent);
 		return exp(base);
 	}
-	virtual ~ExpAlgFixedPower() = 0;
 };
 
 #endif /* EXPALGINTERFACES_H_ */
