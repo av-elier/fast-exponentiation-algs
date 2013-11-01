@@ -19,7 +19,7 @@ NTL_CLIENT
  */
 class ExpAlg {
 public:
-	virtual ZZ_p exp(ZZ_p base, ZZ power) = 0;
+	virtual ZZ_p exp(ZZ_p base, ZZ exponent) = 0;
 
 	const std::string& getAuthor() const {
 		return author;
@@ -42,11 +42,11 @@ private:
 class ExpAlgFixedBase : public ExpAlg {
 public:
 	virtual ZZ_p precalc(ZZ_p base) = 0;
-	virtual ZZ_p exp(ZZ power) = 0;
+	virtual ZZ_p exp(ZZ exponent) = 0;
 
-	ZZ_p exp(ZZ_p base, ZZ power){
+	ZZ_p exp(ZZ_p base, ZZ exponent){
 		precalc(base);
-		return exp(power);
+		return exp(exponent);
 	}
 	virtual ~ExpAlgFixedBase() = 0;
 };
@@ -56,11 +56,11 @@ public:
  */
 class ExpAlgFixedPower : public ExpAlg {
 public:
-	virtual ZZ_p precalc(ZZ power) = 0;
+	virtual ZZ_p precalc(ZZ exponent) = 0;
 	virtual ZZ_p exp(ZZ_p base) = 0;
 
-	ZZ_p exp(ZZ_p base, ZZ power){
-		precalc(power);
+	ZZ_p exp(ZZ_p base, ZZ exponent){
+		precalc(exponent);
 		return exp(base);
 	}
 	virtual ~ExpAlgFixedPower() = 0;
