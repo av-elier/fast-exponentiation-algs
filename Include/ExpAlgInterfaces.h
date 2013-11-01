@@ -9,50 +9,61 @@
 #define EXPALGINTERFACES_H_
 
 
-enum ExpAlgos
-{
-    algLeftRight = 0,
-    algRightLeft
-};
+#include "NTL/ZZ.h"
+#include "NTL/ZZ_p.h"
 
+NTL_CLIENT
 
-class ExpAlgInterface {
-public:
-	ExpAlgInterface(){}
-	virtual ~ExpAlgInterface(){}
-};
-
+/*
+ * Общие методы экспоненцирования
+ */
 class ExpAlg {
-    virtual void setAuthor(std::string author) = 0;
-    virtual void setMethod(std::string author) = 0;
+public:
+	virtual ZZ_p exp(ZZ_p base, ZZ power) = 0;
+
+	const std::string& getAuthor() const {
+		return author;
+	}
+	const std::string& getMethod() const {
+		return method;
+	}
+	virtual ~ExpAlg() = 0;
+
+private:
+	// Должен быть задан в конструкторе вашей реализации
+	std::string author;
+	// Должен быть задан в конструкторе вашей реализации
+	std::string method;
 };
 
-class ExpAlgFastInterface : public ExpAlgInterface {
+/*
+ * Методы экспоненцирования с фиксированным основанием
+ */
+class ExpAlgFixedBase : public ExpAlg {
 public:
-	ExpAlgFastInterface(){}
-	virtual ~ExpAlgFastInterface(){}
+	virtual ZZ_p precalc(ZZ_p base) = 0;
+	virtual ZZ_p exp(ZZ power) = 0;
 
-	virtual ZZ_p exp(ZZ_p x, ZZ n){return conv<ZZ_p>(0);}
-
+	ZZ_p exp(ZZ_p base, ZZ power){
+		precalc(base);
+		return exp(power);
+	}
+	virtual ~ExpAlgFixedBase() = 0;
 };
 
-
-class ExpAlgPrecalcXInterface : public ExpAlgInterface {
+/*
+ * Методы экспоненцирования с фиксированной экспонентой
+ */
+class ExpAlgFixedPower : public ExpAlg {
 public:
-	ExpAlgPrecalcXInterface(){}
-	virtual ~ExpAlgPrecalcXInterface(){}
+	virtual ZZ_p precalc(ZZ power) = 0;
+	virtual ZZ_p exp(ZZ_p base) = 0;
 
-	virtual void precalculate(ZZ_p x){}
-	virtual ZZ_p exp(ZZ n){return conv<ZZ_p>(0);}
-};
-
-class ExpAlgPrecalcNInterface : public ExpAlgInterface {
-public:
-	ExpAlgPrecalcNInterface(){}
-	virtual ~ExpAlgPrecalcNInterface(){}
-
-	virtual void precalculate(ZZ n){}
-	virtual ZZ_p exp(ZZ_p x){return conv<ZZ_p>(0);}
+	ZZ_p exp(ZZ_p base, ZZ power){
+		precalc(power);
+		return exp(base);
+	}
+	virtual ~ExpAlgFixedPower() = 0;
 };
 
 #endif /* EXPALGINTERFACES_H_ */
