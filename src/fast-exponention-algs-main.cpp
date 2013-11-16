@@ -17,6 +17,7 @@
 #include "NTL/ZZ_p.h"
 
 #include "algorithms/adelier/RightToLeftByAdelier.h"
+#include "algorithms/adelier/FloatingWindowUnsigned.h"
 
 #include "Proffy.h"
 
@@ -84,13 +85,12 @@ int main() {
 	// algorithms
 	vector<ExpAlg*> expAlgs;
 	expAlgs.push_back(new Adelier::RightToLeft());
+	expAlgs.push_back(new Adelier::FloatingWindowUnsigned(3));
 
 	//Tests
 	if (!MyTests::testAll(expAlgs))
 		return -1; // пока не пройдёт все тесты нет смысла считать время
 
-
-	// NOTE: FIRST RUN IS SLOWER THAN NEXT. Probably NTL optimization
 	// TODO solve this problem
 	// their profiling
 	for (unsigned int i = 0; i < expAlgs.size(); ++i)
