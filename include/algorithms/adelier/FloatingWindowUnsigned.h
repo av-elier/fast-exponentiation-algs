@@ -26,6 +26,8 @@ public:
 	ZZ_p exp(ZZ_p x, ZZ n);
 private:
 	int windowSize;
+	long windowMask;
+	void setWindowSize(int windowSize);
 
 	// x^odd = oddBaseDegrees[(odd+1)/2]
 	vector<ZZ_p*> oddBaseDegrees;

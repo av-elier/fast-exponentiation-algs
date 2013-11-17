@@ -27,13 +27,17 @@ static bool testExpAlg(ExpAlg *algo){
 
 	ZZ_p samplex = conv<ZZ_p>(conv<ZZ>(2));
 	ZZ samplen = conv<ZZ>(4);
-	if ( algo->exp(samplex, samplen) != 16 ) // assert true
+	if ( algo->exp(samplex, samplen) != 16 ){ // assert true
+		cout << algo->exp(samplex, samplen) << " != " << 16 << endl;
 		return false;
+	}
 
 	samplex = conv<ZZ_p>(conv<ZZ>("11"));
 	samplen = conv<ZZ>("6");
-	if ( algo->exp(samplex, samplen) != 27 ) // assert true
+	if ( algo->exp(samplex, samplen) != 27 ){ // assert true
+		cout << algo->exp(samplex, samplen) << " != " << 27 << endl;
 		return false;
+	}
 
 	return true;
 }

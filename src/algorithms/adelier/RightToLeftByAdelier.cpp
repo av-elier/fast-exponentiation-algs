@@ -19,7 +19,7 @@ RightToLeft::~RightToLeft(){
 ZZ_p RightToLeft::exp(ZZ_p x, ZZ exponent){
 	ZZ_p y = conv<ZZ_p>(1);
 
-	long l = NumBits(exponent);
+	int l = NumBits(exponent);
 
 	for(int i = 0; i < l; ++i){
 		if (bit(exponent, i) == 1)
