@@ -5,17 +5,15 @@
  *      Author: Adelier
  */
 
-#include "RightToLeftByAdelier.h"
+#include "algorithms/adelier/RightToLeftByAdelier.h"
 
 namespace Adelier {
 
-RightToLeft::RightToLeft() {
-	// TODO Auto-generated constructor stub
-
+RightToLeft::RightToLeft(){
+		setAuthor(L"Adelier");
+		setMethod(L"RightToLeft");
 }
-
-RightToLeft::~RightToLeft() {
-	// TODO Auto-generated destructor stub
+RightToLeft::~RightToLeft(){
 }
 
 ZZ_p RightToLeft::exp(ZZ_p x, ZZ exponent){

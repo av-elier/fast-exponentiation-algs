@@ -16,6 +16,9 @@ fast-exponention-algs
 #### Про GIT
 [Online книга](http://git-scm.com/book/ru)
 
+#### Интересные и полезные ссылки
+[Выставка групп!](http://web.bentley.edu/empl/c/ncarter/ge-v1/groups.html)
+
 
 ООбщие методы экспоненцирования
 ------------------------------
