@@ -12,15 +12,27 @@
 
 namespace Adelier {
 
-class Euclid : public ExpAlgFixedExponent {
+class Euclid : public ExpAlgFixedBase {
 public:
-	Euclid();
+	Euclid(int _radixBitCount, ExpAlg *_simpleAlg);
 	virtual ~Euclid();
 
-	ZZ_p precalc(ZZ exponent);
-	ZZ_p exp(ZZ_p base);
+	void precalc(ZZ_p x);
+	ZZ_p exp(ZZ n);
 private:
+	ExpAlg* simpleAlg;
+	int radixBitCount;
+	int length;
+	ZZ p;
+	ZZ mask;
+	/**
+	 * At <i>i</i> stands <i>x^(2^radixBitCount)</i> <br>
+	 * At 0 stands x
+	 */
+	ZZ_p *xdegs;
 
+	void setRadixBitCountAndMask(int radixBitCount);
+	ZZ* toRadixRepresentation(ZZ val);
 
 };
 
