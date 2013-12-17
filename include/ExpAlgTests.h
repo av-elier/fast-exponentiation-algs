@@ -47,7 +47,7 @@ static bool test(ExpAlg *algo){
 	}
 	return success; // lie
 }
-static bool testAll(vector<ExpAlg*> algos){
+static bool testAll(vector<ExpAlg*> &algos){
 	bool success = true;
 	for (unsigned int i = 0; i < algos.size(); ++i){
 		success = success && test(algos[i]);

@@ -15,8 +15,8 @@
  */
 
 #include "ExpAlgInterfaces.h"
-#include "NTL\ZZ.h"
-#include "NTL\ZZ_p.h"
+#include "NTL/ZZ.h"
+#include "NTL/ZZ_p.h"
 using namespace NTL;
 
 

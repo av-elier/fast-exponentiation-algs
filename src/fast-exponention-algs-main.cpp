@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <vector>
-#include <windows.h>
 #include <sstream>
 
 #include "ExpAlgTests.h"
@@ -19,70 +18,86 @@
 #include "algorithms/adelier/RightToLeftByAdelier.h"
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
 
-#include "Proffy.h"
 
 using namespace std;
 using namespace NTL;
 
-const int TESTS_COUNT = 300;
-const double PROFFY_SAMPLING_DELAY = 1.0 / 200; // Delay between samples, so here set to 200 Hz
-const wchar_t* PATH_TO_PROFFY_EXE = L"J:\\Program Files\\Proffy profiler\\Proffy64.exe"; // Proffy64 should be included to path
-const wchar_t* PATH_TO_PROFFY_OUT = L"profiler_reports"; // Output directory for the result files
+const int TESTS_COUNT = 3000;
 
-void MyCreateDirForAlgo(ExpAlg* algo){
-	::CreateDirectoryW(PATH_TO_PROFFY_OUT, NULL);
 
-    std::wostringstream authorPath;
-    authorPath << PATH_TO_PROFFY_OUT << L"\\" << algo->getAuthor().c_str();
-	::CreateDirectoryW(authorPath.str().c_str(), NULL);
-
-    std::wostringstream authorMethodPath;
-    authorMethodPath << authorPath.str().c_str() << L"\\" << algo->getMethod().c_str();
-	::CreateDirectoryW(authorMethodPath.str().c_str(), NULL);
-}
-
-// maybe TODO threading. Proffy rewrites file thread-<numthread>.xml (1)
 void profile_fast_algo(int testsCount, ExpAlg* algo) {
         // before profiling starts
-        MyCreateDirForAlgo(algo);
-
-        // TODO: generate array of pseudo-random x and n (locale-proof!)
+        // TODO: generate array of pseudo-random x and n
         ZZ_p samplex = conv<ZZ_p>(conv<ZZ>("1000000000000011"));
         ZZ samplen = conv<ZZ>("600000000000000000");
 
         ZZ_p res;
 
-
-        std::wostringstream authorMethodPath;
-        authorMethodPath << PATH_TO_PROFFY_OUT << L"\\" << algo->getAuthor().c_str() << L"\\" << algo->getMethod().c_str();
-
         // to profile
         {
-                Proffy::Launcher profiler(PATH_TO_PROFFY_EXE, authorMethodPath.str().c_str(), PROFFY_SAMPLING_DELAY);
-
+                double st = GetTime();
                 for (int i = 0; i < TESTS_COUNT; ++i) {
                         res = algo->exp(samplex, samplen);
                 }
+                cout << GetTime() - st << endl;
         }
 }
 
-void profileFixedBaseAlgo(int testsCount, ExpAlg* algo) {
-        MyCreateDirForAlgo(algo);
-
+void randomBigIntegerListZZ(vector<ZZ> &exponents, int length, int bitLength) {
+	for (int i = 0; i < length; i++) {
+		ZZ tmp = RandomBits_ZZ(bitLength);
+		exponents.push_back( tmp );
+	}
 }
+void randomBigIntegerListZZ_p(vector<ZZ_p> &bases, int length, int bitLength) {
+	for (int i = 0; i < length; i++) {
+		ZZ_p tmp = random_ZZ_p();
+		bases.push_back( tmp );
+	}
+}
+void profile(ExpAlg* alg, vector<ZZ_p> bases,
+		vector<ZZ> exponents) {
+	ZZ_p res;
+	for (int i = 0; i < bases.size(); ++i) {
+		for (int j = 0; j < exponents.size(); ++j) {
+			res = alg->exp(bases[i], exponents[j]);
+		}
+	}
+	cout << res << endl;
+}
+void completeProf(vector<ExpAlg*> &algs) {
+	double bitsOnTest = 8*1024;
+	int testLengths[] = {8, 64, 512, 2048, 4*1024};
+	for (int i = 0; i < sizeof(testLengths) / sizeof(int); i++) {
+		int bitLength = testLengths[i];
+		cout << "Running bit length = " << bitLength << endl;
+		ZZ p = RandomBits_ZZ(bitLength);
+		ZZ_p::init(p);
+		int testBasesCount = (int) floor(sqrt(bitsOnTest / bitLength));
+		int testExponentsCount = (int) ceil(sqrt(bitsOnTest / bitLength));
+		vector<ZZ_p> bases;
+		randomBigIntegerListZZ_p(bases, testBasesCount, bitLength);
+//		for (unsigned int i = 0; i < bases.size(); ++i)
+//			cout << bases[i] << " "; cout << endl;
+		vector<ZZ> exponents;
+		randomBigIntegerListZZ(exponents, testExponentsCount, bitLength);
+//		for (unsigned int i = 0; i < exponents.size(); ++i)
+//			cout << exponents[i] << " "; cout << endl;
+		for (unsigned int i = 0; i < algs.size(); ++i) {
+			cout << "Profiling: " << i << endl;
+			profile(algs[i], bases, exponents);
+		}
+		bases.clear();
+		exponents.clear();
 
-void profileFixedExponentAlgo(int testsCount, ExpAlg* algo) {
-        MyCreateDirForAlgo(algo);
-
+	}
 }
 
 int main() {
-
-
 	// algorithms
 	vector<ExpAlg*> expAlgs;
 	expAlgs.push_back(new Adelier::RightToLeft());
-	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation());
+	//expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation());
 
 	//Tests
 	if (!MyTests::testAll(expAlgs))
@@ -93,9 +108,12 @@ int main() {
 	//ZZ p = GenPrime_ZZ(2048, 80); // takes quite a time
 	ZZ_p::init(p);
 
+	// good profiling
+	completeProf(expAlgs);
+
 	// their profiling
-	for (unsigned int i = 0; i < expAlgs.size(); ++i)
-		profile_fast_algo(TESTS_COUNT, expAlgs[i]);
+//	for (unsigned int i = 0; i < expAlgs.size(); ++i)
+//		profile_fast_algo(TESTS_COUNT, expAlgs[i]);
 
 
 
