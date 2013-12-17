@@ -43,9 +43,10 @@ static bool testExpAlg(ExpAlg *algo){
 }
 static bool test(ExpAlg *algo){
 	bool success = true; // optimistic, yes
-	if (testExpAlg(algo))
+	wcout << algo->getAuthor() << "'s " << algo->getMethod() << ":\t";
+	if (testExpAlg(algo)) {
 		cout<<"test success"<<endl;
-	else {
+	} else {
 		cout<<"TEST FAILED!"<<endl;
 		success = false;
 	}
