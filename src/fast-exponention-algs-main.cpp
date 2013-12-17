@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+//#include <omp.h>
 
 #include "ExpAlgTests.h"
 
@@ -17,6 +18,8 @@
 
 #include "algorithms/adelier/RightToLeftByAdelier.h"
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
+#include "algorithms/adelier/FloatingWindowUnsigned.h"
+#include "algorithms/adelier/Euclid.h"
 
 
 using namespace std;
@@ -25,7 +28,7 @@ using namespace NTL;
 const int TESTS_COUNT = 3000;
 
 
-void profile_fast_algo(int testsCount, ExpAlg* algo) {
+void profile_fast_algo(ExpAlg* algo) {
         // before profiling starts
         // TODO: generate array of pseudo-random x and n
         ZZ_p samplex = conv<ZZ_p>(conv<ZZ>("1000000000000011"));
@@ -37,10 +40,11 @@ void profile_fast_algo(int testsCount, ExpAlg* algo) {
         {
                 double st = GetTime();
                 for (int i = 0; i < TESTS_COUNT; ++i) {
-                        res = algo->exp(samplex, samplen);
+                    res = algo->exp(samplex, samplen);
                 }
                 cout << GetTime() - st << endl;
         }
+        cout << res << endl;
 }
 
 void randomBigIntegerListZZ(vector<ZZ> &exponents, int length, int bitLength) {
@@ -89,7 +93,6 @@ void completeProf(vector<ExpAlg*> &algs) {
 		}
 		bases.clear();
 		exponents.clear();
-
 	}
 }
 
@@ -98,6 +101,8 @@ int main() {
 	vector<ExpAlg*> expAlgs;
 	expAlgs.push_back(new Adelier::RightToLeft());
 	//expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation());
+	expAlgs.push_back(new Adelier::FloatingWindowUnsigned(3));
+	expAlgs.push_back(new Adelier::Euclid(4, expAlgs[0]));
 
 	//Tests
 	if (!MyTests::testAll(expAlgs))

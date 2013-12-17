@@ -48,7 +48,7 @@ private:
  */
 class ExpAlgFixedBase : public ExpAlg {
 public:
-	virtual ZZ_p precalc(ZZ_p base) = 0;
+	virtual void precalc(ZZ_p base) = 0;
 	virtual ZZ_p exp(ZZ exponent) = 0;
 
 	ZZ_p exp(ZZ_p base, ZZ exponent){
