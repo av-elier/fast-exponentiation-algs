@@ -17,6 +17,7 @@
 #include "NTL/ZZ_p.h"
 
 #include "algorithms/Pure.h"
+#include "algorithms/NtlExpAlg.h"
 #include "algorithms/adelier/RightToLeftByAdelier.h"
 #include "algorithms/adelier/FloatingWindowUnsigned.h"
 #include "algorithms/adelier/Euclid.h"
@@ -47,12 +48,14 @@ void launchOnFixedBasesExponents(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exp
 	}
 }
 void launchAlgorythms(vector<ExpAlg*> &algs) {
-	double bitsOnTest = 8*1024;
-	int testLengths[] = {8, 64, 512, 2048, 4*1024};
+	double st = GetTime();
+	double bitsOnTest = 16*1024;
+	int testLengths[] = {8, 64, 512, 2048};
 	for (int i = 0; i < sizeof(testLengths) / sizeof(int); i++) {
 		int bitLength = testLengths[i];
 		cout << "Running bit length = " << bitLength << endl;
-		ZZ p = RandomBits_ZZ(bitLength);
+		ZZ p = GenPrime_ZZ(bitLength, 80);//RandomBits_ZZ(bitLength);//
+		cout << "\tprime generated " << endl;
 		ZZ_p::init(p);
 
 		int testBasesCount = (int) floor(sqrt(bitsOnTest / bitLength));
@@ -71,17 +74,18 @@ void launchAlgorythms(vector<ExpAlg*> &algs) {
 		bases.clear();
 		exponents.clear();
 	}
+	cout << GetTime() - st << endl;
 }
 
 int main() {
 	// algorithms
 	vector<ExpAlg*> expAlgs;
 
-//	expAlgs.push_back(new Adelier::Pure()); // slow as hell
+	expAlgs.push_back(new Adelier::NtlExpAlg());
 	expAlgs.push_back(new Adelier::RightToLeft());
-	expAlgs.push_back(new Adelier::FloatingWindowUnsigned(3));
-	expAlgs.push_back(new Adelier::Euclid(4, expAlgs[0]));
-//	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation()); // c magic ain't working here
+	expAlgs.push_back(new Adelier::FloatingWindowUnsigned(8));
+	expAlgs.push_back(new Adelier::Euclid(250, new Adelier::NtlExpAlg()));
+	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation()); // Zp - field only
 
 	//Tests
 	if (!MyTests::testAll(expAlgs))

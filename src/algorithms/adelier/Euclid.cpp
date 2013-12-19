@@ -42,6 +42,13 @@ void Euclid::precalc(ZZ_p x){
 }
 
 ZZ_p Euclid::exp(ZZ n){
+	if (length == 1)
+		/*
+		 * Слишком короткое число для этого метода, вызовется просто
+		 * алгоритм для "коротких" чисел {@code simpleAlg}
+		 */
+		return simpleAlg->exp(xdegs[0], n);
+
 	ZZ_p *xdegs = this->xdegs;
 	ZZ *ndegs = toRadixRepresentation(n);
 
