@@ -13,15 +13,15 @@ namespace Valtonis
 class SlidingWindowSignExponentation : public ExpAlg
 {
 public:
-    SlidingWindowSignExponentation();
+    SlidingWindowSignExponentation(char ws = 4);
     ~SlidingWindowSignExponentation();
 
-    void precalculate(ZZ_p x,char ws = 4);//ws - размер окна
+    void precalculate(const ZZ_p &x);//ws - размер окна
     ZZ_p exp(ZZ_p x,ZZ exponent);
 
     ZZ_p getValueWithDegree(long long d);//возвращает x^d
 private:
-
+    char ws;
     char k;//k < <= 63
     unsigned long long precalcValuesSize;
     ZZ_p* precalcValuesWithPositiveDeg;//предварительно вычисляемые степени x^3,x^5,...,x^(2^k-1)

@@ -22,6 +22,7 @@
 #include "algorithms/adelier/FloatingWindowUnsigned.h"
 #include "algorithms/adelier/Euclid.h"
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
+#include "algorithms/Ilona/Montgomeri.h"
 
 
 using namespace std;
@@ -85,7 +86,8 @@ int main() {
 	expAlgs.push_back(new Adelier::RightToLeft());
 	expAlgs.push_back(new Adelier::FloatingWindowUnsigned(8));
 	expAlgs.push_back(new Adelier::Euclid(250, new Adelier::NtlExpAlg()));
-	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation()); // Zp - field only
+	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation(8)); // Zp - field only
+	expAlgs.push_back(new Ilona::Montgomeri()); // Zp - field only
 
 	//Tests
 	if (!MyTests::testAll(expAlgs))

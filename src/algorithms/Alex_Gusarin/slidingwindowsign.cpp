@@ -1,16 +1,21 @@
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
+#include "algorithms/Alex_Gusarin/EuclidianAlg.h"
+
+#include <sstream>
 
 using namespace Valtonis;
 
-SlidingWindowSignExponentation::SlidingWindowSignExponentation()
+SlidingWindowSignExponentation::SlidingWindowSignExponentation(char ws)
 {
+	this->ws = ws;
     setAuthor(L"Alex Gusarin");
-    setMethod(L"Sliding Window Sign Exponentation");
+    std::wostringstream meth;
+    meth << L"Sliding Window Sign Exponentation ws=" << (int)ws;
+    setMethod(meth.str().c_str());
     precalcValuesWithPositiveDeg = NULL;
     precalcValuesWithNegativeDeg = NULL;
     precalcValuesSize = 0;
     k = -1;
-    //ZZ_p::init(p);
 }
 
 SlidingWindowSignExponentation::~SlidingWindowSignExponentation()
@@ -19,7 +24,7 @@ SlidingWindowSignExponentation::~SlidingWindowSignExponentation()
     delete []precalcValuesWithNegativeDeg;
 }
 
-void SlidingWindowSignExponentation::precalculate(ZZ_p x,char ws)
+void SlidingWindowSignExponentation::precalculate(const ZZ_p& x)
 {
     if(ws <= 0)
     {
@@ -28,7 +33,7 @@ void SlidingWindowSignExponentation::precalculate(ZZ_p x,char ws)
     if(ws > k)
     {
         k = ws;
-        precalcValuesSize = pow(2,k) / 2;
+        precalcValuesSize = 1 << k;
         delete []precalcValuesWithPositiveDeg;
         delete []precalcValuesWithNegativeDeg;
         precalcValuesWithPositiveDeg = new ZZ_p[precalcValuesSize - 1];
@@ -38,14 +43,19 @@ void SlidingWindowSignExponentation::precalculate(ZZ_p x,char ws)
     {
         k = ws;
     }
-    long deg = precalcValuesSize + 2;
-    for(unsigned long long i = 3;i <= deg;i = i + 2)
+
+    ZZ_p factor = sqr(x);
+    precalcValuesWithPositiveDeg[0] = x * factor;
+    for(long long i = 1; i < precalcValuesSize - 1; i++)
     {
-        precalcValuesWithPositiveDeg[(i - 3) / 2] = power(x,i);
+        precalcValuesWithPositiveDeg[i] = precalcValuesWithPositiveDeg[i-1] * factor;
     }
-    for(unsigned long long i = 1;i <= deg;i = i + 2)
+    ZZ p = x.modulus();
+    precalcValuesWithNegativeDeg[0] = conv<ZZ_p>(findInvr(conv<ZZ>(x),p));
+    factor = sqr(precalcValuesWithNegativeDeg[0]);
+    for(long long i = 1; i < precalcValuesSize; i++)
     {
-        precalcValuesWithNegativeDeg[(i - 1) / 2] = power(x,(-1) * i);
+        precalcValuesWithNegativeDeg[i] = precalcValuesWithNegativeDeg[i-1] * factor;
     }
 }
 
@@ -77,7 +87,7 @@ ZZ_p SlidingWindowSignExponentation::getValueWithDegree(long long d)
 
 ZZ_p SlidingWindowSignExponentation::exp(ZZ_p x,ZZ exponent)
 {
-    precalculate(x,3);
+    precalculate(x);
     NAFRepresentation naf;
     naf.createNAF(exponent);
     long i = naf.getSize() - 1;
@@ -111,6 +121,8 @@ ZZ_p SlidingWindowSignExponentation::exp(ZZ_p x,ZZ exponent)
             else
             {
                 y *= getValueWithDegree(u);
+            	if (y == 0)
+            		throw (1); // никогда умножения не приводят к нулю
             }
             i = s - 1;
         }

@@ -20,6 +20,8 @@ NTL_CLIENT;
 
 namespace MyTests {
 
+bool success;
+
 static bool testExpAlg(ExpAlg *algo){
 
 	ZZ_p::init(conv<ZZ>(59));
@@ -27,7 +29,7 @@ static bool testExpAlg(ExpAlg *algo){
 	ZZ_p samplex = conv<ZZ_p>(conv<ZZ>(2));
 	ZZ samplen = conv<ZZ>(4);
 	if ( algo->exp(samplex, samplen) != 16 ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << 16 << endl;
+		cout << algo->exp(samplex, samplen) << " != " << 16;
 		return false;
 	}
 
@@ -35,7 +37,7 @@ static bool testExpAlg(ExpAlg *algo){
 	samplex = conv<ZZ_p>(conv<ZZ>("11"));
 	samplen = conv<ZZ>("6");
 	if ( algo->exp(samplex, samplen) != 27 ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << 27 << endl;
+		cout << algo->exp(samplex, samplen) << " != " << 27;
 		return false;
 	}
 
@@ -43,7 +45,7 @@ static bool testExpAlg(ExpAlg *algo){
 	samplex = conv<ZZ_p>(conv<ZZ>("112"));
 	samplen = conv<ZZ>("911");
 	if ( algo->exp(samplex, samplen) != 58 ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << 58 << endl;
+		cout << algo->exp(samplex, samplen) << " != " << 58;
 		return false;
 	}
 
@@ -51,32 +53,31 @@ static bool testExpAlg(ExpAlg *algo){
 	samplex = conv<ZZ_p>(conv<ZZ>("13131313131313131"));
 	samplen = conv<ZZ>("31313131313131313");
 	if ( algo->exp(samplex, samplen) != conv<ZZ_p>(conv<ZZ>("312935641032900970")) ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << "312935641032900970" << endl;
+		cout << algo->exp(samplex, samplen) << " != " << "312935641032900970";
 		return false;
 	}
 
 	return true;
 }
-static bool test(ExpAlg *algo){
-	bool success = true; // optimistic, yes
+static void test(ExpAlg *algo){
 	wcout << algo->getAuthor() << "'s " << algo->getMethod() << ":\t";
 	try {
 		if (testExpAlg(algo)) {
 			cout<<"test success"<<endl;
 		} else {
-			cout<<"TEST FAILED!"<<endl;
+			cout<<"\tTEST FAILED!"<<endl;
 			success = false;
 		}
 	} catch (int e) {
-		cout<<"TEST FAILED!"<<endl;
+		cout<<"\tTEST FAILED! With exception"<<endl;
 		success = false;
 	}
-	return success; // lie
 }
 static bool testAll(vector<ExpAlg*> &algos){
-	bool success = true;
+	success = true;
 	for (unsigned int i = 0; i < algos.size(); ++i){
-		success = success && test(algos[i]);
+		test(algos[i]); //success = success && test(algos[i]);
+		//delete algos[i];
 	}
 	return success;
 }
