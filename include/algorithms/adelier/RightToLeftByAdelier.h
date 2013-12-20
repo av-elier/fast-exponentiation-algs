@@ -7,12 +7,6 @@
 
 #ifndef RIGHTTOLEFTBYADELIER_H_
 #define RIGHTTOLEFTBYADELIER_H_
-/*
- * RightToLeftByAdelier.h
- *
- *  Created on: 28 ���. 2013 �.
- *      Author: Adelier
- */
 
 #include "ExpAlgInterfaces.h"
 #include "NTL/ZZ.h"
@@ -27,6 +21,7 @@ public:
 	RightToLeft();
 	virtual ~RightToLeft();
 	ZZ_p exp(ZZ_p x, ZZ n);
+
 };
 
 } /* namespace Adelier */

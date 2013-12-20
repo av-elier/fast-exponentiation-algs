@@ -5,7 +5,7 @@
 #include "NTL/ZZ_p.h"
 
 #include "ExpAlgInterfaces.h"
-#include "nafrepresentation.h"
+#include "algorithms/Alex_Gusarin/nafrepresentation.h"
 
 namespace Valtonis
 {
