@@ -9,7 +9,7 @@ class NAFRepresentation//класс для представления числа
 public:
     NAFRepresentation();
     ~NAFRepresentation();
-    void createNAF(NTL::ZZ& val);
+    void createNAF(const NTL::ZZ& val);
     char getBitVal(unsigned long long pos);
     void setSize(unsigned long long sz);
     unsigned long long getSize();

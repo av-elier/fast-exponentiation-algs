@@ -17,7 +17,7 @@ NAFRepresentation::~NAFRepresentation()
     delete []sign;
 }
 
-void NAFRepresentation::createNAF(ZZ& val)
+void NAFRepresentation::createNAF(const ZZ& val)
 {
     unsigned long long sz = NumBits(val);
     setSize(sz);
