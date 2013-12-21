@@ -16,6 +16,8 @@
 #include "NTL/ZZ.h"
 #include "NTL/ZZ_p.h"
 
+
+// Обычные
 #include "algorithms/Pure.h"
 #include "algorithms/NtlExpAlg.h"
 #include "algorithms/adelier/RightToLeftByAdelier.h"
@@ -23,6 +25,10 @@
 #include "algorithms/adelier/Euclid.h"
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
 #include "algorithms/Ilona/Montgomeri.h"
+
+// Векторные
+#include "algorithms/Popova/ShamirUnsigned.h"
+#include "algorithms/Alex_Gusarin/shamirsign.h"
 
 
 using namespace std;
@@ -88,6 +94,10 @@ int main() {
 	expAlgs.push_back(new Adelier::Euclid(250, new Adelier::NtlExpAlg()));
 	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation(8)); // Zp - field only
 	expAlgs.push_back(new Ilona::Montgomeri()); // Zp - field only
+
+	// векторные
+//	expAlgs.push_back(new Popova::ShamirUnsigned());
+//	expAlgs.push_back(new Valtonis::ShamirSign());
 
 	//Tests
 	if (!MyTests::testAll(expAlgs))
