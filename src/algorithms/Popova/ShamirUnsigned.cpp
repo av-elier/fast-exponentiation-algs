@@ -50,16 +50,11 @@ void ShamirUnsigned::xseqCalc(ZZ_p x, ZZ base, long size)
 	delete []xseq;
 	xseq = new ZZ_p[size];
 	xseq[0] = x;
-	ZZ_p tempx;
 
 	if (size > 1)
 	{
-		tempx = xInDegBase(x, base);
 		for (long i = 1; i < size; i++)
-		{
-			tempx*=tempx;
-            xseq[i]=tempx;
-		}
+			xseq[i] = xInDegBase(x, power(base,i));
 	}
 }
 
@@ -121,11 +116,12 @@ ZZ_p ShamirUnsigned::exp(ZZ_p x,ZZ exponent)
 	return y;
 }
 
-long ShamirUnsigned::FromDecToAny(ZZ exponent, ZZ base)
+long ShamirUnsigned::FromDecToAny(ZZ exponent, ZZ base)//определение числа элементов в разложении exponent
 {
 	ZZ newExp = exponent;
 	ZZ temp;
 	long r_ = 0;
+
 	if (newExp < base)
 	{
 		r_ = 1;
@@ -142,6 +138,7 @@ long ShamirUnsigned::FromDecToAny(ZZ exponent, ZZ base)
 		}
 		nseqCalc(exponent, base, r_);
 	}
+
 	return r_;
 }
 
@@ -165,6 +162,7 @@ void ShamirUnsigned::nseqCalc(ZZ exponent, ZZ base, long r_)
 		tempn[i]=temp;
 		newExp = newExp/base;
 	}
+
 	VectInvert(tempn, r_);
 }
 
