@@ -92,6 +92,7 @@ ZZ_p ShamirUnsigned::xInDegBase(ZZ_p x, ZZ base)
 			y *= x;
 		x *= x;
 	}
+
 	return y;
 }
 
@@ -116,26 +117,26 @@ ZZ_p ShamirUnsigned::exp(ZZ_p x,ZZ exponent)
 	return y;
 }
 
-long ShamirUnsigned::FromDecToAny(ZZ exponent, ZZ base)//определение числа элементов в разложении exponent
+long ShamirUnsigned::FromDecToAny(ZZ exponent, ZZ base)
 {
 	ZZ newExp = exponent;
 	ZZ temp;
-	long r_ = 0;
+	long r_ = 1;
 
 	if (newExp < base)
 	{
-		r_ = 1;
 		nseq = new ZZ[r_];
 		nseq[0] = newExp;
 	}
 	else
 	{
-		while ((newExp % base)!=0)
+		while (newExp > base)
 		{
 			temp = newExp % base;
 			r_++;
 			newExp = newExp/base;
 		}
+
 		nseqCalc(exponent, base, r_);
 	}
 
@@ -165,5 +166,4 @@ void ShamirUnsigned::nseqCalc(ZZ exponent, ZZ base, long r_)
 
 	VectInvert(tempn, r_);
 }
-
 
