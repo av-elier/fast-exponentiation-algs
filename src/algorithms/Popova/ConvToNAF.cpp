@@ -1,4 +1,4 @@
-#include "ConvToNAF.h"
+#include "algorithms/Popova/ConvToNAF.h"
 
 using namespace NTL;
 using namespace std;
