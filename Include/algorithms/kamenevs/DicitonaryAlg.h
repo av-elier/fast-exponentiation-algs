@@ -14,6 +14,7 @@ public:
 	void create_chain(ZZ exponent);
 	void create_elem(ZZ exponent);
 	ZZ_p precalc(ZZ exponent);
+	
 	ZZ_p exp(ZZ_p base);
 	//ZZ_p exp(ZZ_p base,ZZ exponent);
 };

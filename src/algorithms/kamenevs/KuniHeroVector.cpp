@@ -1,7 +1,7 @@
-#include "algorithms/kamenevs/KuniHero.h"
+#include "algorithms/kamenevs/KuniHeroVector.h"
 #include <algorithm>
 
-vector<string>* Kunihero::create_str_dicitionary(string s)
+vector<string>* KuniheroVector::create_str_dicitionary(string s)
 {
 	double p = 0;
 	for (int i = 0; i < s.length(); ++i)
@@ -19,7 +19,7 @@ vector<string>* Kunihero::create_str_dicitionary(string s)
 	}
 	return res;
 }
-vector<ZZ>* Kunihero::create_num_dicitionary(vector<string>& strs)
+vector<ZZ>* KuniheroVector::create_num_dicitionary(vector<string>& strs)
 {
 	vector<ZZ>* res = new vector<ZZ>();
 		for (int i = 0; i < strs.size(); ++i)
