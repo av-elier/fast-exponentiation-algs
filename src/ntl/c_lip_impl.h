@@ -1458,7 +1458,7 @@ void zsxmul(long lams, long *lama, long *lamb)
 
 
 
-static
+static inline
 void zaddmulsq(long lsqi, long *lsqa, long *lsqb)
 { 
    long lsqs; 
@@ -1631,7 +1631,7 @@ void zsubmul(long lams, long *lama, long *lamb)
 #else
 /* default long integer arithmetic */
 
-static
+static inline
 void zsubmul(long lams, long *lama, long *lamb)
 { 
    long lami = (*lamb++)-1; 
@@ -3073,7 +3073,7 @@ void kar_mul(long *c, long *a, long *b, long *stk)
 #define KARSX (32) 
 #endif
 
-static
+static inline
 void kar_sq(long *c, long *a, long *stk)
 {
    long sa, sc;
@@ -4360,7 +4360,7 @@ done:
    _ntl_zcopy(r, rr);
 }
 
-void
+void inline
 _ntl_zquickmod(_ntl_verylong *rr, _ntl_verylong b)
 {
    long sa, sb, sq, i;

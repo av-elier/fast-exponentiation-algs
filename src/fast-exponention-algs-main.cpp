@@ -28,6 +28,9 @@
 #include "algorithms/kamenevs/KuniHero.h"
 #include "algorithms/kamenevs/Yakobi.h"
 
+#include "algorithms/kamenevs/WrapHiro.h"
+#include "algorithms/kamenevs/WrapYakobi.h"
+
 // Векторные
 #include "algorithms/Popova/ShamirUnsigned.h"
 #include "algorithms/Alex_Gusarin/shamirsign.h"
@@ -58,7 +61,7 @@ void launchOnFixedBasesExponents(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exp
 }
 void launchAlgorythms(vector<ExpAlg*> &algs) {
 	double st = GetTime();
-	double bitsOnTest = 16*1024;
+	double bitsOnTest = 2*1024;
 	int testLengths[] = {8, 64, 512, 2048};
 	for (int i = 0; i < sizeof(testLengths) / sizeof(int); i++) {
 		int bitLength = testLengths[i];
@@ -96,8 +99,8 @@ int main() {
 	expAlgs.push_back(new Adelier::Euclid(250, new Adelier::NtlExpAlg()));
 	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation(8)); // Zp - field only
 	expAlgs.push_back(new Ilona::Montgomeri());
-	expAlgs.push_back(new Yakobi());
-	expAlgs.push_back(new Kunihero());
+	expAlgs.push_back(new WrapYakobi(new Yakobi()));
+	expAlgs.push_back(new WrapHiro(new Kunihero()));
 
 	// векторные
 //	expAlgs.push_back(new Popova::ShamirUnsigned());
