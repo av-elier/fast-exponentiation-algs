@@ -17,16 +17,9 @@ private:
 public:
 	WrapYakobi(Yakobi *yakobi);
 	virtual ~WrapYakobi();
-	void precalc(ZZ exponent){
-		yakobi.precalc(exponent);
-	}
-	ZZ_p exp(ZZ_p base){
-		return yakobi.exp(base);
-	}
-	ZZ_p exp(ZZ_p base, ZZ exponent){
-		precalc(exponent);
-		return exp(base);
-	}
+	void precalc(ZZ exponent);
+	ZZ_p exp(ZZ_p base);
+	ZZ_p exp(ZZ_p base, ZZ exponent);
 };
 
 

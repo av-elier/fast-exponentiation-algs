@@ -16,3 +16,13 @@ WrapYakobi::WrapYakobi(Yakobi *yakobi){
 WrapYakobi::~WrapYakobi() {
 	// TODO Auto-generated destructor stub
 }
+void WrapYakobi::precalc(ZZ exponent){
+	yakobi.precalc(exponent);
+}
+ZZ_p WrapYakobi::exp(ZZ_p base){
+	return yakobi.exp(base);
+}
+ZZ_p WrapYakobi::exp(ZZ_p base, ZZ exponent){
+	precalc(exponent);
+	return exp(base);
+}
