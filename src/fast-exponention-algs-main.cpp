@@ -26,6 +26,7 @@
 #include "algorithms/veremeenko.h"
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
 #include "algorithms/Ilona/Montgomeri.h"
+#include "algorithms/Ilona/Browerfs.h"
 #include "algorithms/kamenevs/KuniHero.h"
 #include "algorithms/kamenevs/Yakobi.h"
 
@@ -91,6 +92,7 @@ void launchAlgorithms(vector<ExpAlg*> &algs) {
 }
 
 int main() {
+	ZZ_p::init(conv<ZZ>(2));
 	// algorithms
 	vector<ExpAlg*> expAlgs;
 
@@ -100,6 +102,7 @@ int main() {
 	expAlgs.push_back(new Adelier::Euclid(250, new Adelier::NtlExpAlg()));
 	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation(8)); // Zp - field only
 	expAlgs.push_back(new Ilona::Montgomeri());
+	expAlgs.push_back(new Ilona::BrowerSigned());
 	expAlgs.push_back(new WrapYakobi(new Yakobi()));
 	expAlgs.push_back(new WrapHiro(new Kunihero()));
 	expAlgs.push_back(new Veremeenko::LeftToRight());
