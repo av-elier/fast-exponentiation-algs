@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\algorithms\NtlExpAlg.h" />
+    <ClInclude Include="..\Include\algorithms\veremeenko.h" />
     <ClInclude Include="..\Include\ExpAlgInterfaces.h" />
     <ClInclude Include="..\src\ntl\c_lip_impl.h" />
     <ClInclude Include="..\src\ntl\g_lip_impl.h" />
@@ -37,6 +38,7 @@
     <ClCompile Include="..\src\algorithms\Popova\ConvToNAF.cpp" />
     <ClCompile Include="..\src\algorithms\Popova\ShamirUnsigned.cpp" />
     <ClCompile Include="..\src\algorithms\Pure.cpp" />
+    <ClCompile Include="..\src\algorithms\veremeenko.cpp" />
     <ClCompile Include="..\src\fast-exponention-algs-main.cpp" />
     <ClCompile Include="..\src\ntl\ctools.cpp" />
     <ClCompile Include="..\src\ntl\FacVec.cpp" />

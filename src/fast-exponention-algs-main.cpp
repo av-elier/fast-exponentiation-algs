@@ -17,12 +17,13 @@
 #include "NTL/ZZ_p.h"
 
 
-// РћР±С‹С‡РЅС‹Рµ
+// Обычные
 #include "algorithms/Pure.h"
 #include "algorithms/NtlExpAlg.h"
 #include "algorithms/adelier/RightToLeftByAdelier.h"
 #include "algorithms/adelier/FloatingWindowUnsigned.h"
 #include "algorithms/adelier/Euclid.h"
+#include "algorithms/veremeenko.h"
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
 #include "algorithms/Ilona/Montgomeri.h"
 #include "algorithms/kamenevs/KuniHero.h"
@@ -31,7 +32,7 @@
 #include "algorithms/kamenevs/WrapHiro.h"
 #include "algorithms/kamenevs/WrapYakobi.h"
 
-// Р’РµРєС‚РѕСЂРЅС‹Рµ
+// Векторные
 #include "algorithms/Popova/ShamirUnsigned.h"
 #include "algorithms/Alex_Gusarin/shamirsign.h"
 
@@ -101,14 +102,17 @@ int main() {
 	expAlgs.push_back(new Ilona::Montgomeri());
 	expAlgs.push_back(new WrapYakobi(new Yakobi()));
 	expAlgs.push_back(new WrapHiro(new Kunihero()));
+	expAlgs.push_back(new Veremeenko::LeftToRight());
+	expAlgs.push_back(new Veremeenko::Yao(4, 2048));  // bit_length_of_numeral_system_base, max_n_bit_length
 
-	// РІРµРєС‚РѕСЂРЅС‹Рµ
-//	expAlgs.push_back(new Popova::ShamirUnsigned());
-//	expAlgs.push_back(new Valtonis::ShamirSign());
+
+	// векторные
+	//expAlgs.push_back(new Popova::ShamirUnsigned());
+	//expAlgs.push_back(new Valtonis::ShamirSign());
 
 	//Tests
 	if (!ExpAlgTests::testAll(expAlgs))
-		return -1; // РїРѕРєР° РЅРµ РїСЂРѕР№РґС‘С‚ РІСЃРµ С‚РµСЃС‚С‹ РЅРµС‚ СЃРјС‹СЃР»Р° РёРґС‚Рё РґР°Р»СЊС€Рµ
+		return -1; // пока не пройдёт все тесты нет смысла идти дальше
 
 	// smart profiling
 	launchAlgorithms(expAlgs);
