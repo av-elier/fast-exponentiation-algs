@@ -66,8 +66,8 @@ void multipleAlgLaunch(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exponents) {
 }
 void launchAlgorithms(vector<ExpAlg*> &algs) {
 	double st = GetTime();
-	double bitsOnTest = 2*1024;
-	int testLengths[] = {128, 512, 2048};
+	double bitsOnTest = 50*1024;
+	int testLengths[] = { 2048};
 	for (int i = 0; i < sizeof(testLengths) / sizeof(int); i++) {
 		int bitLength = testLengths[i];
 		cout << "Running bit length = " << bitLength << endl;
@@ -85,7 +85,10 @@ void launchAlgorithms(vector<ExpAlg*> &algs) {
 		randomZZVector(exponents, testExponentsCount, bitLength);
 
 		for (auto it = algs.begin(); it != algs.end(); ++it) {
+			double start = GetTime();
 			multipleAlgLaunch(*it, bases, exponents);
+			cout << GetTime() - start << " sec";
+			wcout << (*it)->getAuthor() << "'s " << (*it)->getMethod() << ":\t" << endl;
 		}
 	}
 	cout << GetTime() - st << endl;
