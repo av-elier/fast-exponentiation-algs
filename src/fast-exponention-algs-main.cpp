@@ -53,7 +53,7 @@ void randomZZ_pVector(vector<ZZ_p> &bases, int length, int bitLength) {
 		bases.push_back( tmp );
 	}
 }
-void launchOnFixedBasesExponents(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exponents) {
+void multipleAlgLaunch(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exponents) {
 	ZZ_p res;
 	for (int i = 0; i < bases.size(); ++i) {
 		for (int j = 0; j < exponents.size(); ++j) {
@@ -64,11 +64,11 @@ void launchOnFixedBasesExponents(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exp
 void launchAlgorithms(vector<ExpAlg*> &algs) {
 	double st = GetTime();
 	double bitsOnTest = 2*1024;
-	int testLengths[] = {8, 64, 512, 2048};
+	int testLengths[] = {128, 512, 2048};
 	for (int i = 0; i < sizeof(testLengths) / sizeof(int); i++) {
 		int bitLength = testLengths[i];
 		cout << "Running bit length = " << bitLength << endl;
-		ZZ p = GenPrime_ZZ(bitLength, 80);//RandomBits_ZZ(bitLength);//
+		ZZ p = GenPrime_ZZ(bitLength, 80);  // 2^{-80} probability to be mistaken if it's trully prime
 		cout << "\tprime generated " << endl;
 		ZZ_p::init(p);
 
@@ -81,12 +81,9 @@ void launchAlgorithms(vector<ExpAlg*> &algs) {
 		vector<ZZ> exponents;
 		randomZZVector(exponents, testExponentsCount, bitLength);
 
-		for (unsigned int i = 0; i < algs.size(); ++i) {
-			launchOnFixedBasesExponents(algs[i], bases, exponents);
+		for (auto it = algs.begin(); it != algs.end(); ++it) {
+			multipleAlgLaunch(*it, bases, exponents);
 		}
-
-		bases.clear();
-		exponents.clear();
 	}
 	cout << GetTime() - st << endl;
 }
@@ -96,17 +93,17 @@ int main() {
 	// algorithms
 	vector<ExpAlg*> expAlgs;
 
-	expAlgs.push_back(new Adelier::NtlExpAlg());
 	expAlgs.push_back(new Adelier::RightToLeft());
 	expAlgs.push_back(new Adelier::FloatingWindowUnsigned(8));
 	expAlgs.push_back(new Adelier::Euclid(250, new Adelier::NtlExpAlg()));
+	expAlgs.push_back(new Veremeenko::Yao(2, 2048));  // bit_length_of_numeral_system_base, max_n_bit_length
+	expAlgs.push_back(new Veremeenko::LeftToRight());
 	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation(8)); // Zp - field only
 	expAlgs.push_back(new Ilona::Montgomeri());
-	expAlgs.push_back(new Ilona::BrowerSigned());
+	//expAlgs.push_back(new Ilona::BrowerSigned());
 	expAlgs.push_back(new WrapYakobi(new Yakobi()));
 	expAlgs.push_back(new WrapHiro(new Kunihero()));
-	expAlgs.push_back(new Veremeenko::LeftToRight());
-	expAlgs.push_back(new Veremeenko::Yao(4, 2048));  // bit_length_of_numeral_system_base, max_n_bit_length
+	expAlgs.push_back(new Adelier::NtlExpAlg());
 
 
 	// векторные

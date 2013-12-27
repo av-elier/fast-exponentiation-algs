@@ -33,6 +33,9 @@
     <ClInclude Include="..\Include\algorithms\veremeenko.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\ExpAlgTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ntl\ctools.cpp">
@@ -309,6 +312,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\algorithms\veremeenko.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\Ilona\Browerfs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

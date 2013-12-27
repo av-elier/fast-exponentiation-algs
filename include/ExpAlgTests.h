@@ -43,7 +43,7 @@ static bool testExpAlg(ExpAlg *algo){
 		ZZ_p::init(it->prime);
 		ZZ_p tmp = algo->exp(conv<ZZ_p>(it->base), it->exponent);
 		if (tmp != conv<ZZ_p>(it->result)) {
-			cout << tmp << " != " << conv<ZZ_p>(it->result);
+			cout << tmp << " != " << conv<ZZ_p>(it->result) << endl;
 			return false;
 		}
 	}

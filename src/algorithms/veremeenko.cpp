@@ -15,7 +15,6 @@ namespace Veremeenko {
 	ZZ_p LeftToRight::exp(ZZ_p x, ZZ n)
 	{
 		ZZ_p y = conv<ZZ_p>(x);
-
 		long bit_length = NTL::NumBits(n);
 		for (long i = bit_length - 2; i >= 0; --i) {
 			y = NTL::sqr(y);
