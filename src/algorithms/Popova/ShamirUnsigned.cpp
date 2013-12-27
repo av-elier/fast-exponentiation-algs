@@ -98,6 +98,8 @@ ZZ_p ShamirUnsigned::xInDegBase(ZZ_p x, ZZ base)
 
 ZZ_p ShamirUnsigned::exp(ZZ_p x,ZZ exponent)
 {
+	precalculate(x, exponent);
+
 	long l;
 	l = getLen(r);
 	ZZ_p y = conv<ZZ_p>(1);

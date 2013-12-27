@@ -29,6 +29,7 @@
 #include "algorithms/Ilona/Browerfs.h"
 #include "algorithms/kamenevs/KuniHero.h"
 #include "algorithms/kamenevs/Yakobi.h"
+#include "algorithms/fierospirit/limali.h"
 
 #include "algorithms/kamenevs/WrapHiro.h"
 #include "algorithms/kamenevs/WrapYakobi.h"
@@ -36,6 +37,8 @@
 // Векторные
 #include "algorithms/Popova/ShamirUnsigned.h"
 #include "algorithms/Alex_Gusarin/shamirsign.h"
+#include "algorithms/dvork1ng/MultiExpUnsigned.h"
+#include "algorithms/dvork1ng/MultiExpSigned.h"
 
 
 using namespace std;
@@ -98,6 +101,7 @@ int main() {
 	expAlgs.push_back(new Adelier::Euclid(250, new Adelier::NtlExpAlg()));
 	expAlgs.push_back(new Veremeenko::Yao(2, 2048));  // bit_length_of_numeral_system_base, max_n_bit_length
 	expAlgs.push_back(new Veremeenko::LeftToRight());
+	expAlgs.push_back(new FieroSpirit::limali());
 	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation(8)); // Zp - field only
 	expAlgs.push_back(new Ilona::Montgomeri());
 	//expAlgs.push_back(new Ilona::BrowerSigned());
@@ -109,6 +113,8 @@ int main() {
 	// векторные
 	//expAlgs.push_back(new Popova::ShamirUnsigned());
 	//expAlgs.push_back(new Valtonis::ShamirSign());
+	//	expAlgs.push_back(new dvork1ng::MultiExpSigned());
+	//	expAlgs.push_back(new dvork1ng::MultiExpUnsigned());
 
 	//Tests
 	if (!ExpAlgTests::testAll(expAlgs))

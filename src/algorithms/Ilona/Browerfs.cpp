@@ -15,7 +15,7 @@ BrowerSigned::BrowerSigned()
     setAuthor(L"Ilona Vinnichuk");
     setMethod(L"BrowerSigned");
 
-    vecx[conv<ZZ>(0)]=conv<ZZ_p>(0);
+    //vecx[conv<ZZ>(0)]=conv<ZZ_p>(0);
 		
 	bin.empty();
 	binN.empty();
@@ -239,6 +239,7 @@ void BrowerSigned::dec_base( ZZ n, int base , vector<ZZ> &bin  )
 //degree = 2^k-1
 // vecx = [ 1,x^1,x^(-1),x^3,x^(-3), x^5, ... , x^degree, x^(-degree) ]
 {
+	vecx.clear();
     int degree;
 	 
     ZZ p = x.modulus();
