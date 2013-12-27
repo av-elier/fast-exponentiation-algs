@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="NTL">
+      <UniqueIdentifier>{c3321c23-f4c4-4c2a-9bf4-ddc8e8d4762b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\ntl\c_lip_impl.h">
+      <Filter>NTL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ntl\g_lip_impl.h">
+      <Filter>NTL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\algorithms\NtlExpAlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ExpAlgInterfaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\ntl\ctools.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\FacVec.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\FFT.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\fileio.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\G_LLL_FP.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\G_LLL_QP.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\G_LLL_RR.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\G_LLL_XD.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GetTime.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2E.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2EX.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2EXFactoring.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2X.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2X1.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2XFactoring.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\GF2XVec.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\HNF.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lip.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\LLL.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\LLL_FP.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\LLL_QP.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\LLL_RR.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\LLL_XD.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_pE.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_pEX.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_pEXFactoring.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_pX.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_pX1.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_pXCharPoly.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\lzz_pXFactoring.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_GF2.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_GF2E.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_lzz_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_lzz_pE.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_poly_lzz_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_poly_ZZ.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_poly_ZZ_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_RR.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_ZZ.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_ZZ_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\mat_ZZ_pE.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\quad_float.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\RR.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\tools.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_GF2.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_GF2E.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_lzz_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_lzz_pE.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_RR.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_ZZ.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_ZZ_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\vec_ZZ_pE.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\WordVector.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\xdouble.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_p.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_pE.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_pEX.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_pEXFactoring.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_pX.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_pX1.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_pXCharPoly.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZ_pXFactoring.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZVec.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZX.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZX1.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZXCharPoly.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntl\ZZXFactoring.cpp">
+      <Filter>NTL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fast-exponention-algs-main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\NtlExpAlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\Pure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\adelier\Euclid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\adelier\FloatingWindowUnsigned.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\adelier\RightToLeftByAdelier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\Alex_Gusarin\nafrepresentation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\Alex_Gusarin\slidingwindowsign.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\Ilona\Montgomeri.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\chain_class.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\chain_vector_class.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\DictionaryAlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\KuniHero.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\KuniHeroVector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\WrapHiro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\WrapYakobi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\Yakobi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kamenevs\YakobiVector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\Popova\ConvToNAF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\Popova\ShamirUnsigned.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

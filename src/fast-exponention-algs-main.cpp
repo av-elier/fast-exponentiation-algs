@@ -3,7 +3,7 @@
 // Author      : Adelier
 // Version     : 0.0.0
 // Copyright   : 
-// Description : Homework 1-st year graduate students mmcs.sfedu.ru
+// Description : Homework by 1-st year graduate students (mmcs.sfedu.ru)
 //============================================================================
 
 #include <iostream>
@@ -17,7 +17,7 @@
 #include "NTL/ZZ_p.h"
 
 
-// Обычные
+// РћР±С‹С‡РЅС‹Рµ
 #include "algorithms/Pure.h"
 #include "algorithms/NtlExpAlg.h"
 #include "algorithms/adelier/RightToLeftByAdelier.h"
@@ -31,7 +31,7 @@
 #include "algorithms/kamenevs/WrapHiro.h"
 #include "algorithms/kamenevs/WrapYakobi.h"
 
-// Векторные
+// Р’РµРєС‚РѕСЂРЅС‹Рµ
 #include "algorithms/Popova/ShamirUnsigned.h"
 #include "algorithms/Alex_Gusarin/shamirsign.h"
 
@@ -59,7 +59,7 @@ void launchOnFixedBasesExponents(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exp
 		}
 	}
 }
-void launchAlgorythms(vector<ExpAlg*> &algs) {
+void launchAlgorithms(vector<ExpAlg*> &algs) {
 	double st = GetTime();
 	double bitsOnTest = 2*1024;
 	int testLengths[] = {8, 64, 512, 2048};
@@ -102,16 +102,21 @@ int main() {
 	expAlgs.push_back(new WrapYakobi(new Yakobi()));
 	expAlgs.push_back(new WrapHiro(new Kunihero()));
 
-	// векторные
+	// РІРµРєС‚РѕСЂРЅС‹Рµ
 //	expAlgs.push_back(new Popova::ShamirUnsigned());
 //	expAlgs.push_back(new Valtonis::ShamirSign());
 
 	//Tests
-	if (!MyTests::testAll(expAlgs))
-		return -1; // пока не пройдёт все тесты нет смысла идти дальше
+	if (!ExpAlgTests::testAll(expAlgs))
+		return -1; // РїРѕРєР° РЅРµ РїСЂРѕР№РґС‘С‚ РІСЃРµ С‚РµСЃС‚С‹ РЅРµС‚ СЃРјС‹СЃР»Р° РёРґС‚Рё РґР°Р»СЊС€Рµ
 
 	// smart profiling
-	launchAlgorythms(expAlgs);
+	launchAlgorithms(expAlgs);
+
+
+	for (auto it = expAlgs.begin(); it != expAlgs.end(); ++it) {
+		delete *it;
+	}
 
 	return 0;
 }
