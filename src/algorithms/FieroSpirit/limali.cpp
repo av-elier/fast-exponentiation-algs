@@ -51,13 +51,14 @@ ZZ_p limali::xdegree( ZZ_p x , int xdeg )
 }
 
 
-int limali::pow2( unsigned int P)
+inline int limali::pow2( unsigned int P)
 //2^P
 {
-	int r = 1; // ��� ������� = 0 ��������� ����� 1
-		for (; P-- > 0;)
-			r *= 2;
-	return r;
+	return 1<<P;
+//	int r = 1; // ��� ������� = 0 ��������� ����� 1
+//		for (; P-- > 0;)
+//			r *= 2;
+//	return r;
 }
 
 

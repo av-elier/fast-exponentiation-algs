@@ -30,6 +30,8 @@
 #include "algorithms/kamenevs/KuniHero.h"
 #include "algorithms/kamenevs/Yakobi.h"
 #include "algorithms/fierospirit/limali.h"
+#include "algorithms/fierospirit/brower.h"
+#include "algorithms/YGazaryan/RightToLeft.h"
 
 #include "algorithms/kamenevs/WrapHiro.h"
 #include "algorithms/kamenevs/WrapYakobi.h"
@@ -95,7 +97,7 @@ void launchAlgorithms(vector<ExpAlg*> &algs) {
 }
 
 int main() {
-	ZZ_p::init(conv<ZZ>(2));
+	ZZ_p::init(conv<ZZ>(59));
 	// algorithms
 	vector<ExpAlg*> expAlgs;
 
@@ -105,9 +107,11 @@ int main() {
 	expAlgs.push_back(new Veremeenko::Yao(2, 2048));  // bit_length_of_numeral_system_base, max_n_bit_length
 	expAlgs.push_back(new Veremeenko::LeftToRight());
 	expAlgs.push_back(new FieroSpirit::limali());
+	expAlgs.push_back(new FieroSpirit::brower());
 	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation(8)); // Zp - field only
 	expAlgs.push_back(new Ilona::Montgomeri());
-	//expAlgs.push_back(new Ilona::BrowerSigned());
+	expAlgs.push_back(new YGazaryan::RightToLeft());
+	expAlgs.push_back(new Ilona::BrowerSigned());
 	expAlgs.push_back(new WrapYakobi(new Yakobi()));
 	expAlgs.push_back(new WrapHiro(new Kunihero()));
 	expAlgs.push_back(new Adelier::NtlExpAlg());

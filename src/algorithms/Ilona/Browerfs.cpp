@@ -14,8 +14,8 @@ BrowerSigned::BrowerSigned()
 {
     setAuthor(L"Ilona Vinnichuk");
     setMethod(L"BrowerSigned");
-
-    //vecx[conv<ZZ>(0)]=conv<ZZ_p>(0);
+	
+    vecx[conv<ZZ>(0)]=conv<ZZ_p>(0);
 		
 	bin.empty();
 	binN.empty();
@@ -117,7 +117,8 @@ ZZ BrowerSigned::findInvr(const ZZ& a)//возвращает x уравнени�
 long long BrowerSigned::pow2( unsigned long long P)
 //2^P
 {
-	long long r = 1; // Для степени = 0 результат будет 1
+	long long r ;
+	r = 1;
 		for (; P-- > 0;)
 			r *= 2;
 	return r;
@@ -129,9 +130,12 @@ long long BrowerSigned::pow2( unsigned long long P)
 //either k found as a result of inequality solving, or set as limit
 //degree = 2^k-1
 {
-	bool flag = false; //we have not reached/found a border=k yet
-	int tmp, tmptmp, k =1 ;
-	double logarifm2n = log(n)/log(2.0);
+	bool flag ;
+	flag = false;
+	int tmp, tmptmp, k;
+		k=1 ;
+	double logarifm2n;
+	logarifm2n = log(n)/log(2.0);
 	tmp = 0;
 	//for( k = 1 ; (k <= limit) & (!flag)  ; k++ )
 	while ( (k <= limit) & (!flag) )
@@ -149,7 +153,7 @@ long long BrowerSigned::pow2( unsigned long long P)
 		k = limit;
 		degree = pow2(k-1);
 	}
-	return k ;
+return k;
 }
 
 void BrowerSigned::dec_base( ZZ n, int base , vector<ZZ> &bin  )
@@ -234,12 +238,44 @@ void BrowerSigned::dec_base( ZZ n, int base , vector<ZZ> &bin  )
 
 } 
 
+ void BrowerSigned::sigma( ZZ m , int k , int & s , ZZ & u )
+//sigma(0) = (k,0)
+//sigma(m) = (s,u), where m = u*2^s
+{
+	if ( IsZero(m) )
+	{
+		s = k ;
+		u = 0 ;
+	}
+	else
+	{
+		s = 0;
+		u = m;
+		while ( conv<int>(u)% 2 == 0 )
+		{
+			u = u / 2 ;
+
+			s++;
+		}
+	}
+}
+
+/*------- method auxilary functions have ended -------*/
+
 /*------- method auxilary functions  -------*/
  void BrowerSigned::precalculate(  ZZ_p x,ZZ exponent )
 //degree = 2^k-1
 // vecx = [ 1,x^1,x^(-1),x^3,x^(-3), x^5, ... , x^degree, x^(-degree) ]
 {
-	vecx.clear();
+	//vecx.clear();
+	//bin.~vector();
+	//binN.~vector();
+
+	//bin.empty();
+	//binN.empty();
+
+	//vecx[conv<ZZ>(0)]=conv<ZZ_p>(0);
+	
     int degree;
 	 
     ZZ p = x.modulus();
@@ -249,7 +285,7 @@ void BrowerSigned::dec_base( ZZ n, int base , vector<ZZ> &bin  )
 	ZZ_p sq_x = square(x) ; 
 	CreateNAF (exponent);
 	
-    k = kcount( exponent , 10 , degree );
+    k=kcount( exponent , 10 , degree );
 	
 	
 	InvNAF(exponent );   
@@ -280,29 +316,7 @@ void BrowerSigned::dec_base( ZZ n, int base , vector<ZZ> &bin  )
 }
 
 
- void BrowerSigned::sigma( ZZ m , int k , int & s , ZZ & u )
-//sigma(0) = (k,0)
-//sigma(m) = (s,u), where m = u*2^s
-{
-	if ( IsZero(m) )
-	{
-		s = k ;
-		u = 0 ;
-	}
-	else
-	{
-		s = 0;
-		u = m;
-		while ( conv<int>(u)% 2 == 0 )
-		{
-			u = u / 2 ;
-			
-			s++;
-		}
-	}
-} 
 
-/*------- method auxilary functions have ended -------*/
 
 
 /*------- Brower's method -------*/
@@ -310,8 +324,7 @@ void BrowerSigned::dec_base( ZZ n, int base , vector<ZZ> &bin  )
 //the method that should be assessed/measured !!!!!!!!
 //it's called in brower_with_precomps  or anything like that
 {	
-	 precalculate(x, exponent);
-
+	precalculate(x, exponent);
 	int degree;
 	ZZ_p y = conv<ZZ_p>(1);
 	int i,j,s;
@@ -334,8 +347,11 @@ void BrowerSigned::dec_base( ZZ n, int base , vector<ZZ> &bin  )
 			y = square( y );
 		}
 	}
+	//bin.~vector();
+	//binN.~vector();
+	vecx.clear();
+	binN.clear();
+	bin.clear();
 	return y;
 
 }    
-
-
