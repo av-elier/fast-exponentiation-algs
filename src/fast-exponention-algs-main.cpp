@@ -3,7 +3,7 @@
 // Author      : Adelier
 // Version     : 0.0.0
 // Copyright   : 
-// Description : Homework 1-st year graduate students mmcs.sfedu.ru
+// Description : Homework by 1-st year graduate students (mmcs.sfedu.ru)
 //============================================================================
 
 #include <iostream>
@@ -22,6 +22,7 @@
 #include "algorithms/adelier/FloatingWindowUnsigned.h"
 #include "algorithms/adelier/Euclid.h"
 #include "algorithms/Alex_Gusarin/slidingwindowsign.h"
+#include "algorithms/veremeenko.h"
 
 
 using namespace std;
@@ -47,7 +48,7 @@ void launchOnFixedBasesExponents(ExpAlg* alg, vector<ZZ_p> bases, vector<ZZ> exp
 		}
 	}
 }
-void launchAlgorythms(vector<ExpAlg*> &algs) {
+void launchAlgorithms(vector<ExpAlg*> &algs) {
 	double st = GetTime();
 	double bitsOnTest = 16*1024;
 	int testLengths[] = {8, 64, 512, 2048};
@@ -88,11 +89,16 @@ int main() {
 	expAlgs.push_back(new Valtonis::SlidingWindowSignExponentation()); // Zp - field only
 
 	//Tests
-	if (!MyTests::testAll(expAlgs))
+	if (!ExpAlgTests::testAll(expAlgs))
 		return -1; // пока не пройдёт все тесты нет смысла идти дальше
 
 	// smart profiling
-	launchAlgorythms(expAlgs);
+	launchAlgorithms(expAlgs);
+
+
+	for (auto it = expAlgs.begin(); it != expAlgs.end(); ++it) {
+		delete *it;
+	}
 
 	return 0;
 }

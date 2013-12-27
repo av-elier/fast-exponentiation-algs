@@ -5,8 +5,8 @@
  *      Author: Adelier
  */
 
-#ifndef MYTESTS_H_
-#define MYTESTS_H_
+#ifndef _EXP_ALG_TESTS_H_
+#define _EXP_ALG_TESTS_H_
 
 #include <vector>
 
@@ -18,41 +18,33 @@
 
 NTL_CLIENT;
 
-namespace MyTests {
+namespace ExpAlgTests {
+
+struct TestValues
+{
+	ZZ prime;
+	ZZ base;
+	ZZ exponent;
+	ZZ result;
+	TestValues(ZZ p, ZZ b, ZZ e, ZZ r) : prime(p), base(b),
+		exponent(e), result(r) {}
+};
 
 static bool testExpAlg(ExpAlg *algo){
 
-	ZZ_p::init(conv<ZZ>(59));
+	vector<TestValues> test_values;  // TestValues(prime, base, exponent, result)
+	test_values.push_back(TestValues(conv<ZZ>(59), conv<ZZ>(2), conv<ZZ>(4), conv<ZZ>(16)));
+	test_values.push_back(TestValues(conv<ZZ>(59), conv<ZZ>("11"), conv<ZZ>("6"), conv<ZZ>(27)));
+	test_values.push_back(TestValues(conv<ZZ>("662867092149154843"), conv<ZZ>("13131313131313131"),
+		conv<ZZ>("31313131313131313"), conv<ZZ>("312935641032900970")));
 
-	ZZ_p samplex = conv<ZZ_p>(conv<ZZ>(2));
-	ZZ samplen = conv<ZZ>(4);
-	if ( algo->exp(samplex, samplen) != 16 ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << 16 << endl;
-		return false;
-	}
-
-	ZZ_p::init(conv<ZZ>(59));
-	samplex = conv<ZZ_p>(conv<ZZ>("11"));
-	samplen = conv<ZZ>("6");
-	if ( algo->exp(samplex, samplen) != 27 ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << 27 << endl;
-		return false;
-	}
-
-	ZZ_p::init(conv<ZZ>(123));
-	samplex = conv<ZZ_p>(conv<ZZ>("112"));
-	samplen = conv<ZZ>("911");
-	if ( algo->exp(samplex, samplen) != 58 ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << 58 << endl;
-		return false;
-	}
-
-	ZZ_p::init(conv<ZZ>("662867092149154843"));
-	samplex = conv<ZZ_p>(conv<ZZ>("13131313131313131"));
-	samplen = conv<ZZ>("31313131313131313");
-	if ( algo->exp(samplex, samplen) != conv<ZZ_p>(conv<ZZ>("312935641032900970")) ){ // assert true
-		cout << algo->exp(samplex, samplen) << " != " << "312935641032900970" << endl;
-		return false;
+	for (auto it = test_values.begin(); it != test_values.end(); ++it) {
+		ZZ_p::init(it->prime);
+		ZZ_p tmp = algo->exp(conv<ZZ_p>(it->base), it->exponent);
+		if (tmp != conv<ZZ_p>(it->result)) {
+			cout << tmp << " != " << conv<ZZ_p>(it->result);
+			return false;
+		}
 	}
 
 	return true;
@@ -82,6 +74,6 @@ static bool testAll(vector<ExpAlg*> &algos){
 }
 
 
-} /* namespace RightToLeftByAdelier */
+} /* namespace ExpAlgTests */
 
-#endif /* MYTESTS_H_ */
+#endif /* _EXP_ALG_TESTS_H_ */
