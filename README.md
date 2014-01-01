@@ -45,4 +45,4 @@ fast-exponention-algs
 Результаты
 ----------------------------------------------------
 Intel Prntium T4300 @2100MHz:
-<img src="https://downloader-default1j.disk.yandex.ru/rdisk/1f3c8a4336d5be5e56e1a52535b281b5/mpfs/O4s0yzO9TtLXpUwRyRxIfQ1alRZ876ZXoIngB6-4KS7OrS6K3RIQRFkdbffvWWjPys9FFdaEGM6VYtqh_8jNSA==?uid=0&filename=most%20recent_cr.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&rtoken=7d289a4135cd53fdc657bf1828f67136&rtimestamp=52bea63a">
+<img src="https://cloclo9.datacloudmail.ru/weblink/view/04bff7c6d6bf/most%20recent_cr.png">
