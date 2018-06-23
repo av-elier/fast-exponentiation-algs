@@ -44,5 +44,5 @@ fast-exponention-algs
 
 Результаты
 ----------------------------------------------------
-Intel Prntium T4300 @2100MHz:
+Intel Pentium T4300 @2100MHz:
 <img src="https://dl.dropboxusercontent.com/sh/3ae7n6nle0k96ac/hRRtevzdZ_/most%20recent_cr.png">
